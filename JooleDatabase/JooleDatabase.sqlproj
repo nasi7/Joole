@@ -57,4 +57,22 @@
   <ItemGroup>
     <Folder Include="Properties" />
   </ItemGroup>
+  <ItemGroup>
+    <Build Include="Users.sql" />
+    <Build Include="Products.sql" />
+    <Build Include="Toasters.sql" />
+    <Build Include="TVs.sql" />
+    <Build Include="Vacumms.sql" />
+    <Build Include="Fans.sql" />
+    <Build Include="TableSaws.sql" />
+    <Build Include="Workbenches.sql" />
+    <Build Include="Couches.sql" />
+    <Build Include="Tables.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="JooleDatabase.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Script.PostDeployment1.sql" />
+  </ItemGroup>
 </Project>
