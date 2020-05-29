@@ -39,5 +39,14 @@ namespace Joole.Controllers
 
             return View();
         }
+
+        public ActionResult doSearch()
+        {
+            //ViewBag.Message = "Your contact page.";
+            System.Diagnostics.Debug.WriteLine("\ndoSearch called!\n");
+
+
+            return View("search");
+        }
     }
 }

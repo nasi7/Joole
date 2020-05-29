@@ -72,11 +72,22 @@
         margin-right:1px;
         height: calc(2.3125rem + 2px);
     }
+    .searchBtn {
+        margin-top: 2%;
+        margin-left: 2px;
+        height: calc(2.3125rem + 2px);
+        width: calc(2.3125rem + 2px);
+        background-color: #2471a7;
+        border-radius: 0.25rem;
+        border: 1px solid transparent;
+        color: white;
+    }
 
 </style>
 
 <html>
 <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width" />
     <title>Joole</title>
@@ -102,6 +113,7 @@
             </div>
         </div>
         <select class="form-control form-control-lg" id="dropdownMenuButton2" name="subCategory" required></select>
+        <button class="searchBtn" onclick="location.href='@Url.Action("doSearch", "Home")'"><i class='fa fa-search'></i></button>
     </div>
 
 
