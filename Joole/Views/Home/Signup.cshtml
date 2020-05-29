@@ -1,0 +1,197 @@
+﻿
+@{
+    ViewBag.Title = "Signup";
+}
+
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+
+<link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<style>
+    html {
+        background-image: linear-gradient(#2474a7,#f9fafc);
+        height: 100%;
+    }
+
+    .profilePic {
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        border: 1px solid #808080;
+    }
+
+    .form-group {
+        margin-bottom: 1px;
+    }
+
+    .form-control {
+        width: 50%;
+        display: inline;
+    }
+
+    .loginLabels {
+        width: 30%;
+    }
+
+    .imageLabels {
+        display: block;
+    }
+
+    .imageDiv {
+        margin-left: 30.7%;
+        margin-bottom: 2%;
+    }
+
+    .btn-file {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn-file input[type=file] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        min-width: 100%;
+        min-height: 100%;
+        font-size: 100px;
+        text-align: right;
+        filter: alpha(opacity=0);
+        opacity: 0;
+        outline: none;
+        background: white;
+        cursor: inherit;
+        display: block;
+    }
+
+    .img-form-control {
+        display: inline;
+        height: 34px;
+        border: none;
+    }
+
+    .modal-header {
+        display: flex;
+    }
+
+    .close {
+        margin-left: 72%;
+        border: 2px solid black !important;
+        border-radius: 50%;
+        height: 100%;
+        width: 4.3%;
+    }
+</style>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Signup</title>
+</head>
+<body>
+    <div class="text-center">
+        <!-- Button HTML (to Trigger Modal) -->
+        <a href="#myModal" class="trigger-btn" data-toggle="modal">Click to Open Login Modal</a>
+    </div>
+
+    <!-- Modal HTML -->
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog modal-login">
+            <div class="modal-content">
+                <form action="/examples/actions/confirmation.php" method="post">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Register as User</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        @*image fields*@
+                        <div class="imageDiv">
+                            <label class="imageLabels">Image Preview</label>
+                            <img class="profilePic" src="~/Content/Images/gray.png" id='img-upload' />
+                            <label class="imageLabels">Your Profile Pic</label>
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <span class="btn btn-default btn-file">
+                                        Choose File <input type="file" id="imgInp">
+                                    </span>
+                                </span>
+                                <input type="text" class="img-form-control" value=" No file chosen" readonly>
+                            </div>
+                        </div>
+                        @*input fields*@
+                        <div class="form-group">
+                            <label class="loginLabels">UserName:</label>
+                            <input type="text" class="form-control" placeholder="User Name" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label class="loginLabels">Email Address:</label>
+                            <input type="email" class="form-control" placeholder="Email Id" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label class="loginLabels">Password:</label>
+                            <input type="password" class="form-control" placeholder="Password" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label class="loginLabels">Confirm Password:</label>
+                            <input type="password" class="form-control" placeholder="Password" required="required">
+                        </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        @*<label class="checkbox-inline pull-left"><input type="checkbox"> Remember me</label>*@
+                        <input type="submit" class="btn btn-primary pull-right" value="Sign up">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    $(document).ready(function () {
+        $(document).on('change', '.btn-file :file', function () {
+            var input = $(this),
+                label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+            input.trigger('fileselect', [label]);
+        });
+
+        $('.btn-file :file').on('fileselect', function (event, label) {
+
+            var input = $(this).parents('.input-group').find(':text'),
+                log = label;
+
+            if (input.length) {
+                input.val(log);
+            } else {
+                if (log) alert(log);
+            }
+
+        });
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#img-upload').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#imgInp").change(function () {
+            readURL(this);
+        });
+    });
+</script>

@@ -26,5 +26,18 @@ namespace Joole.Controllers
 
             return View();
         }
+        public ActionResult Signup()
+        {
+            //ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
+        public ActionResult Search()
+        {
+            //ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
     }
 }
