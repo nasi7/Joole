@@ -100,12 +100,12 @@
         Building Product Selection Platform
     </div>
 
-    <div class="search">
+    <form class="search" method="post" action="@Url.Action("doSearch", "Home")">
         <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" onchange="changeSub()" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Category
             </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" name="category">
                 <a class="dropdown-item" id="cateChanged" value="Mechanical" href="#">Mechanical</a>
                 <a class="dropdown-item" id="cateChanged" value="Elecrical" href="#">Electrical</a>
                 <a class="dropdown-item" id="cateChanged" value="Stationary" href="#">Stationary</a>
@@ -113,8 +113,8 @@
             </div>
         </div>
         <select class="form-control form-control-lg" id="dropdownMenuButton2" name="subCategory" required></select>
-        <button class="searchBtn" onclick="location.href='@Url.Action("doSearch", "Home")'"><i class='fa fa-search'></i></button>
-    </div>
+        <button type="submit" class="searchBtn" @*onclick="location.href='@Url.Action("doSearch", "Home")'"*@><i class='fa fa-search'></i></button>
+    </form>
 
 
     @*<div>

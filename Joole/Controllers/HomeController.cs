@@ -40,11 +40,14 @@ namespace Joole.Controllers
             return View();
         }
 
-        public ActionResult doSearch()
+        [HttpPost]
+        public ActionResult doSearch(FormCollection col)
         {
             //ViewBag.Message = "Your contact page.";
-            System.Diagnostics.Debug.WriteLine("\ndoSearch called!\n");
 
+            var sub = col["subCategory"];
+            System.Diagnostics.Debug.WriteLine("\ndoSearch called!\n");
+  
 
             return View("search");
         }
