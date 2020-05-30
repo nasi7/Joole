@@ -32,6 +32,16 @@ namespace Joole.Controllers
 
             return View();
         }
+        public ActionResult doSignup(FormCollection col)
+        {
+            //ViewBag.Message = "Your contact page.";
+            var user_name = col["userName"];
+            var user_email = col["email"];
+            var user_password = col["userPass"];
+            var user_confirmPass = col["confirmPass"];
+
+            return View();
+        }
 
         public ActionResult Search()
         {
