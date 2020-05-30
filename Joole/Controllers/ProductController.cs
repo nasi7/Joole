@@ -17,5 +17,10 @@ namespace Joole.Controllers
         {
             return View();
         }
+
+        public ActionResult Compare()
+        {
+            return View();
+        }
     }
 }

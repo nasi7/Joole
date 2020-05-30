@@ -76,16 +76,16 @@ textarea {
     background-image: linear-gradient( to top, whitesmoke, white);
 }
 
-    #menu ul li:hover, li:active {
-        background-color: lightgray;
-        transition: 0.5s;
-    }
+#menu ul li:hover, li:active {
+    background-color: lightgray;
+    transition: 0.5s;
+}
 
-    #menu ul li {
-        display: inline-block;
-        padding: 20px;
-    }
+#menu ul li {
+    display: inline-block;
+    padding: 20px;
+}
 
-        #menu ul li a {
-            text-decoration: none;
-        }
+#menu ul li a {
+    text-decoration: none;
+}
