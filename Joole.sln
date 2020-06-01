@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Joole", "Joole\Joole.csproj", "{EFD9796F-CFAE-444E-A0FE-E8CEAE6E136A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JooleMVC", "Joole\JooleMVC.csproj", "{EFD9796F-CFAE-444E-A0FE-E8CEAE6E136A}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "JooleDatabase", "JooleDatabase\JooleDatabase.sqlproj", "{6FF3F07F-AC5E-4EDD-95D8-74177DB2B947}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JooleCore", "JooleCore\JooleCore.csproj", "{5C498394-7ED6-4263-910E-9CD9DB1A2A4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JooleRepo", "JooleRepo\JooleRepo.csproj", "{76094690-7D85-4707-AC55-D109E4126DFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JooleService", "JooleService\JooleService.csproj", "{79E6ED6B-16E2-448C-8861-DC4B9F4DFAC2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,12 +21,18 @@ Global
 		{EFD9796F-CFAE-444E-A0FE-E8CEAE6E136A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EFD9796F-CFAE-444E-A0FE-E8CEAE6E136A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EFD9796F-CFAE-444E-A0FE-E8CEAE6E136A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6FF3F07F-AC5E-4EDD-95D8-74177DB2B947}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6FF3F07F-AC5E-4EDD-95D8-74177DB2B947}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6FF3F07F-AC5E-4EDD-95D8-74177DB2B947}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{6FF3F07F-AC5E-4EDD-95D8-74177DB2B947}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6FF3F07F-AC5E-4EDD-95D8-74177DB2B947}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6FF3F07F-AC5E-4EDD-95D8-74177DB2B947}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{5C498394-7ED6-4263-910E-9CD9DB1A2A4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C498394-7ED6-4263-910E-9CD9DB1A2A4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C498394-7ED6-4263-910E-9CD9DB1A2A4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C498394-7ED6-4263-910E-9CD9DB1A2A4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76094690-7D85-4707-AC55-D109E4126DFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76094690-7D85-4707-AC55-D109E4126DFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76094690-7D85-4707-AC55-D109E4126DFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76094690-7D85-4707-AC55-D109E4126DFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79E6ED6B-16E2-448C-8861-DC4B9F4DFAC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79E6ED6B-16E2-448C-8861-DC4B9F4DFAC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79E6ED6B-16E2-448C-8861-DC4B9F4DFAC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79E6ED6B-16E2-448C-8861-DC4B9F4DFAC2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

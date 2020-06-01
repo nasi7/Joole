@@ -1,0 +1,141 @@
+﻿
+@{
+    ViewBag.Title = "ProductDetails";
+}
+
+<head>
+    <link href="~/Content/Product styles/productDetails.css" rel="stylesheet" />
+</head>
+<body>
+
+    @*the page is seperated into 2 main columns left and right*@
+    <div class="body">
+        <h1 id="pageTitle">Product Summary</h1>
+
+
+        <div class="left">
+            @*The description table*@
+            <div class="desc">
+                <table id="Table">
+                    <thead>
+                        <tr>
+                            <th colspan="2">DESCRIPTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Manufacture</th>
+                            <td>Big Ass</td>
+                        </tr>
+                        <tr>
+                            <th>Series</th>
+                            <td>Haiku H</td>
+                        </tr>
+                        <tr>
+                            <th>Model</th>
+                            <td>S3-150-S0-BC-O4-01-C-01</td>
+                        </tr>
+                    </tbody>
+                </table>
+                @*Type table*@
+                <table id="Table">
+                    <thead>
+                        <tr>
+                            <th colspan="2">TYPE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Use Type</th>
+                            <td>Commercial</td>
+                        </tr>
+                        <tr>
+                            <th>Application</th>
+                            <td>Indoor</td>
+                        </tr>
+                        <tr>
+                            <th>Mounting Location</th>
+                            <td>Roof</td>
+                        </tr>
+                        <tr>
+                            <th>Acessories</th>
+                            <td>With Light</td>
+                        </tr>
+                        <tr>
+                            <th>Model Year</th>
+                            <td>2016</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="type">
+
+            </div>
+        </div>
+        <div class="right">
+            @*Tech Specification table*@
+            <div class="techspec">
+                <table id="Table">
+                    <thead>
+                        <tr>
+                            <th colspan="2">TECHNICAL SPECIFICATIONS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Air Flow(CFM)</th>
+                            <td colspan="4">5467</td>
+                        </tr>
+                        <tr>
+                            <th>Power (W)</th>
+                            <th class="min">Min</th>
+                            <td>1.95</td>
+                            <th class="max">Max</th>
+                            <td>21.14</td>
+                        </tr>
+                        <tr>
+                            <th>Operating Voltage (VAC)</th>
+                            <th>Min</th>
+                            <td>100</td>
+                            <th>Max</th>
+                            <td>240</td>
+                        </tr>
+                        <tr>
+                            <th>Fan Speed (RPM)</th>
+                            <th>Min</th>
+                            <td>35</td>
+                            <th>Max</th>
+                            <td>200</td>
+                        </tr>
+                        <tr>
+                            <th>Number of fan speeds</th>
+                            <td colspan="4">7</td>
+                        </tr>
+                        <tr>
+                            <th>Sound at max speed (dBA)</th>
+                            <td colspan="4">35</td>
+                        </tr>
+                        <tr>
+                            <th>Fan sweep diameter (in)</th>
+                            <td colspan="4">60</td>
+                        </tr>
+                        <tr>
+                            <th>Height (in)</th>
+                            <th>Min</th>
+                            <td>12.3</td>
+                            <th>Max</th>
+                            <td>57</td>
+                        </tr>
+                        <tr>
+                            <th>Weight (lbs)</th>
+                            <td colspan="4">13</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</body>

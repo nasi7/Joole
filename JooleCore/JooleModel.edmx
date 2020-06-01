@@ -1,0 +1,421 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="JooleDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Couches">
+          <Key>
+            <PropertyRef Name="ModelNumber" />
+          </Key>
+          <Property Name="ModelNumber" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="FillingMaterial" Type="varchar" MaxLength="50" />
+          <Property Name="SurfaceMaterial" Type="varchar" MaxLength="50" />
+          <Property Name="Dimension" Type="varchar" MaxLength="32" />
+        </EntityType>
+        <EntityType Name="Fans">
+          <Key>
+            <PropertyRef Name="ModelNumber" />
+          </Key>
+          <Property Name="ModelNumber" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="Airflow" Type="varchar" MaxLength="8" />
+          <Property Name="PowerMax" Type="varchar" MaxLength="8" />
+          <Property Name="PowerMin" Type="varchar" MaxLength="8" />
+          <Property Name="VoltageMax" Type="varchar" MaxLength="8" />
+          <Property Name="VoltageMin" Type="varchar" MaxLength="8" />
+          <Property Name="SpeedMax" Type="varchar" MaxLength="8" />
+          <Property Name="SpeedMin" Type="varchar" MaxLength="8" />
+          <Property Name="NumberOfSpeeds" Type="varchar" MaxLength="8" />
+          <Property Name="SweepDiameter" Type="varchar" MaxLength="8" />
+          <Property Name="SpeedSound" Type="varchar" MaxLength="8" />
+          <Property Name="HeightMax" Type="varchar" MaxLength="16" />
+          <Property Name="HeightMin" Type="varchar" MaxLength="16" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="ModelNumber" />
+          </Key>
+          <Property Name="ModelNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Category" Type="varchar" MaxLength="50" />
+          <Property Name="SubCategory" Type="varchar" MaxLength="50" />
+          <Property Name="Weight" Type="varchar" MaxLength="16" />
+          <Property Name="ModelYear" Type="varchar" MaxLength="4" />
+          <Property Name="Manufacturer" Type="varchar" MaxLength="32" />
+          <Property Name="ProductName" Type="varchar" MaxLength="256" />
+          <Property Name="UseType" Type="varchar" MaxLength="50" />
+          <Property Name="Application" Type="varchar" MaxLength="50" />
+          <Property Name="Accessories" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Tables">
+          <Key>
+            <PropertyRef Name="ModelNumber" />
+          </Key>
+          <Property Name="ModelNumber" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="Material" Type="varchar" MaxLength="64" />
+          <Property Name="Dimension" Type="varchar" MaxLength="32" />
+          <Property Name="Style" Type="varchar" MaxLength="16" />
+        </EntityType>
+        <EntityType Name="TableSaws">
+          <Key>
+            <PropertyRef Name="ModelNumber" />
+          </Key>
+          <Property Name="ModelNumber" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="Power" Type="varchar" MaxLength="16" />
+          <Property Name="Voltage" Type="varchar" MaxLength="16" />
+          <Property Name="Amperes" Type="varchar" MaxLength="16" />
+          <Property Name="Dimension" Type="varchar" MaxLength="32" />
+          <Property Name="Speed" Type="varchar" MaxLength="16" />
+        </EntityType>
+        <EntityType Name="Toasters">
+          <Key>
+            <PropertyRef Name="ModelNumber" />
+          </Key>
+          <Property Name="ModelNumber" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="Power" Type="varchar" MaxLength="8" />
+          <Property Name="Voltage" Type="varchar" MaxLength="8" />
+          <Property Name="HeatingLevel" Type="varchar" MaxLength="8" />
+          <Property Name="Dimensions" Type="varchar" MaxLength="32" />
+        </EntityType>
+        <EntityType Name="TVs">
+          <Key>
+            <PropertyRef Name="ModelNumber" />
+          </Key>
+          <Property Name="ModelNumber" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="Power" Type="varchar" MaxLength="8" />
+          <Property Name="Voltage" Type="varchar" MaxLength="8" />
+          <Property Name="ScreenSize" Type="varchar" MaxLength="8" />
+          <Property Name="Dimension" Type="varchar" MaxLength="32" />
+          <Property Name="Resolution" Type="varchar" MaxLength="32" />
+          <Property Name="InputTypes" Type="varchar" MaxLength="32" />
+          <Property Name="OutputTypes" Type="varchar" MaxLength="32" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="256" />
+          <Property Name="Password" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="Image" Type="image" />
+        </EntityType>
+        <EntityType Name="Vacumms">
+          <Key>
+            <PropertyRef Name="ModelNumber" />
+          </Key>
+          <Property Name="ModelNumber" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="HasBag" Type="varchar" MaxLength="3" />
+          <Property Name="Power" Type="varchar" MaxLength="8" />
+          <Property Name="Voltage" Type="varchar" MaxLength="8" />
+          <Property Name="Amperes" Type="varchar" MaxLength="8" />
+          <Property Name="CordLength" Type="varchar" MaxLength="8" />
+          <Property Name="Capacity" Type="varchar" MaxLength="8" />
+          <Property Name="Dimension" Type="varchar" MaxLength="32" />
+        </EntityType>
+        <EntityType Name="Workbenches">
+          <Key>
+            <PropertyRef Name="ModelNumber" />
+          </Key>
+          <Property Name="ModelNumber" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="Dimension" Type="varchar" MaxLength="32" />
+          <Property Name="SurfaceMaterial" Type="varchar" MaxLength="32" />
+        </EntityType>
+        <EntityContainer Name="JooleDatabaseModelStoreContainer">
+          <EntitySet Name="Couches" EntityType="Self.Couches" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fans" EntityType="Self.Fans" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tables" EntityType="Self.Tables" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TableSaws" EntityType="Self.TableSaws" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Toasters" EntityType="Self.Toasters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TVs" EntityType="Self.TVs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vacumms" EntityType="Self.Vacumms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Workbenches" EntityType="Self.Workbenches" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="JooleDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Couch">
+          <Key>
+            <PropertyRef Name="ModelNumber" />
+          </Key>
+          <Property Name="ModelNumber" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FillingMaterial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SurfaceMaterial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Dimension" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Fan">
+          <Key>
+            <PropertyRef Name="ModelNumber" />
+          </Key>
+          <Property Name="ModelNumber" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Airflow" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="PowerMax" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="PowerMin" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="VoltageMax" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="VoltageMin" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="SpeedMax" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="SpeedMin" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="NumberOfSpeeds" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="SweepDiameter" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="SpeedSound" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="HeightMax" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="HeightMin" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ModelNumber" />
+          </Key>
+          <Property Name="ModelNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SubCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Weight" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="ModelYear" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Manufacturer" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="ProductName" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="UseType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Application" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Accessories" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Table">
+          <Key>
+            <PropertyRef Name="ModelNumber" />
+          </Key>
+          <Property Name="ModelNumber" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Material" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Dimension" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="Style" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TableSaw">
+          <Key>
+            <PropertyRef Name="ModelNumber" />
+          </Key>
+          <Property Name="ModelNumber" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Power" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="Voltage" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="Amperes" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="Dimension" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="Speed" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Toaster">
+          <Key>
+            <PropertyRef Name="ModelNumber" />
+          </Key>
+          <Property Name="ModelNumber" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Power" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="Voltage" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="HeatingLevel" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="Dimensions" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TV">
+          <Key>
+            <PropertyRef Name="ModelNumber" />
+          </Key>
+          <Property Name="ModelNumber" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Power" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="Voltage" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="ScreenSize" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="Dimension" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="Resolution" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="InputTypes" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="OutputTypes" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Vacumm">
+          <Key>
+            <PropertyRef Name="ModelNumber" />
+          </Key>
+          <Property Name="ModelNumber" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HasBag" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="Power" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="Voltage" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="Amperes" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="CordLength" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="Capacity" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="Dimension" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Workbench">
+          <Key>
+            <PropertyRef Name="ModelNumber" />
+          </Key>
+          <Property Name="ModelNumber" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Dimension" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="SurfaceMaterial" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="JooleDatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Couches" EntityType="Self.Couch" />
+          <EntitySet Name="Fans" EntityType="Self.Fan" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="Tables" EntityType="Self.Table" />
+          <EntitySet Name="TableSaws" EntityType="Self.TableSaw" />
+          <EntitySet Name="Toasters" EntityType="Self.Toaster" />
+          <EntitySet Name="TVs" EntityType="Self.TV" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="Vacumms" EntityType="Self.Vacumm" />
+          <EntitySet Name="Workbenches" EntityType="Self.Workbench" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="JooleDatabaseModelStoreContainer" CdmEntityContainer="JooleDatabaseEntities">
+          <EntitySetMapping Name="Couches">
+            <EntityTypeMapping TypeName="JooleDatabaseModel.Couch">
+              <MappingFragment StoreEntitySet="Couches">
+                <ScalarProperty Name="ModelNumber" ColumnName="ModelNumber" />
+                <ScalarProperty Name="FillingMaterial" ColumnName="FillingMaterial" />
+                <ScalarProperty Name="SurfaceMaterial" ColumnName="SurfaceMaterial" />
+                <ScalarProperty Name="Dimension" ColumnName="Dimension" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fans">
+            <EntityTypeMapping TypeName="JooleDatabaseModel.Fan">
+              <MappingFragment StoreEntitySet="Fans">
+                <ScalarProperty Name="ModelNumber" ColumnName="ModelNumber" />
+                <ScalarProperty Name="Airflow" ColumnName="Airflow" />
+                <ScalarProperty Name="PowerMax" ColumnName="PowerMax" />
+                <ScalarProperty Name="PowerMin" ColumnName="PowerMin" />
+                <ScalarProperty Name="VoltageMax" ColumnName="VoltageMax" />
+                <ScalarProperty Name="VoltageMin" ColumnName="VoltageMin" />
+                <ScalarProperty Name="SpeedMax" ColumnName="SpeedMax" />
+                <ScalarProperty Name="SpeedMin" ColumnName="SpeedMin" />
+                <ScalarProperty Name="NumberOfSpeeds" ColumnName="NumberOfSpeeds" />
+                <ScalarProperty Name="SweepDiameter" ColumnName="SweepDiameter" />
+                <ScalarProperty Name="SpeedSound" ColumnName="SpeedSound" />
+                <ScalarProperty Name="HeightMax" ColumnName="HeightMax" />
+                <ScalarProperty Name="HeightMin" ColumnName="HeightMin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="JooleDatabaseModel.Product">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="ModelNumber" ColumnName="ModelNumber" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="SubCategory" ColumnName="SubCategory" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="ModelYear" ColumnName="ModelYear" />
+                <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="UseType" ColumnName="UseType" />
+                <ScalarProperty Name="Application" ColumnName="Application" />
+                <ScalarProperty Name="Accessories" ColumnName="Accessories" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tables">
+            <EntityTypeMapping TypeName="JooleDatabaseModel.Table">
+              <MappingFragment StoreEntitySet="Tables">
+                <ScalarProperty Name="ModelNumber" ColumnName="ModelNumber" />
+                <ScalarProperty Name="Material" ColumnName="Material" />
+                <ScalarProperty Name="Dimension" ColumnName="Dimension" />
+                <ScalarProperty Name="Style" ColumnName="Style" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TableSaws">
+            <EntityTypeMapping TypeName="JooleDatabaseModel.TableSaw">
+              <MappingFragment StoreEntitySet="TableSaws">
+                <ScalarProperty Name="ModelNumber" ColumnName="ModelNumber" />
+                <ScalarProperty Name="Power" ColumnName="Power" />
+                <ScalarProperty Name="Voltage" ColumnName="Voltage" />
+                <ScalarProperty Name="Amperes" ColumnName="Amperes" />
+                <ScalarProperty Name="Dimension" ColumnName="Dimension" />
+                <ScalarProperty Name="Speed" ColumnName="Speed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Toasters">
+            <EntityTypeMapping TypeName="JooleDatabaseModel.Toaster">
+              <MappingFragment StoreEntitySet="Toasters">
+                <ScalarProperty Name="ModelNumber" ColumnName="ModelNumber" />
+                <ScalarProperty Name="Power" ColumnName="Power" />
+                <ScalarProperty Name="Voltage" ColumnName="Voltage" />
+                <ScalarProperty Name="HeatingLevel" ColumnName="HeatingLevel" />
+                <ScalarProperty Name="Dimensions" ColumnName="Dimensions" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TVs">
+            <EntityTypeMapping TypeName="JooleDatabaseModel.TV">
+              <MappingFragment StoreEntitySet="TVs">
+                <ScalarProperty Name="ModelNumber" ColumnName="ModelNumber" />
+                <ScalarProperty Name="Power" ColumnName="Power" />
+                <ScalarProperty Name="Voltage" ColumnName="Voltage" />
+                <ScalarProperty Name="ScreenSize" ColumnName="ScreenSize" />
+                <ScalarProperty Name="Dimension" ColumnName="Dimension" />
+                <ScalarProperty Name="Resolution" ColumnName="Resolution" />
+                <ScalarProperty Name="InputTypes" ColumnName="InputTypes" />
+                <ScalarProperty Name="OutputTypes" ColumnName="OutputTypes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="JooleDatabaseModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vacumms">
+            <EntityTypeMapping TypeName="JooleDatabaseModel.Vacumm">
+              <MappingFragment StoreEntitySet="Vacumms">
+                <ScalarProperty Name="ModelNumber" ColumnName="ModelNumber" />
+                <ScalarProperty Name="HasBag" ColumnName="HasBag" />
+                <ScalarProperty Name="Power" ColumnName="Power" />
+                <ScalarProperty Name="Voltage" ColumnName="Voltage" />
+                <ScalarProperty Name="Amperes" ColumnName="Amperes" />
+                <ScalarProperty Name="CordLength" ColumnName="CordLength" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+                <ScalarProperty Name="Dimension" ColumnName="Dimension" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Workbenches">
+            <EntityTypeMapping TypeName="JooleDatabaseModel.Workbench">
+              <MappingFragment StoreEntitySet="Workbenches">
+                <ScalarProperty Name="ModelNumber" ColumnName="ModelNumber" />
+                <ScalarProperty Name="Dimension" ColumnName="Dimension" />
+                <ScalarProperty Name="SurfaceMaterial" ColumnName="SurfaceMaterial" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
