@@ -218,6 +218,8 @@
     <Content Include="Content\Images\logo.png" />
     <Content Include="Content\Product styles\productDetails.css" />
     <Content Include="Content\Product styles\compareDetails.css" />
+    <Content Include="Content\Images\gray.png" />
+    <Content Include="Content\Images\joole_logo.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -355,6 +357,8 @@
     <Content Include="Views\Users\Details.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Home\Signup.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
