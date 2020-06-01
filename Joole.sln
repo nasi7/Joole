@@ -5,6 +5,13 @@ VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JooleMVC", "Joole\JooleMVC.csproj", "{EFD9796F-CFAE-444E-A0FE-E8CEAE6E136A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JooleCore", "JooleCore\JooleCore.csproj", "{5C498394-7ED6-4263-910E-9CD9DB1A2A4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JooleRepo", "JooleRepo\JooleRepo.csproj", "{76094690-7D85-4707-AC55-D109E4126DFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JooleService", "JooleService\JooleService.csproj", "{79E6ED6B-16E2-448C-8861-DC4B9F4DFAC2}"
+EndProject
+
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +22,18 @@ Global
 		{EFD9796F-CFAE-444E-A0FE-E8CEAE6E136A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EFD9796F-CFAE-444E-A0FE-E8CEAE6E136A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EFD9796F-CFAE-444E-A0FE-E8CEAE6E136A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C498394-7ED6-4263-910E-9CD9DB1A2A4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C498394-7ED6-4263-910E-9CD9DB1A2A4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C498394-7ED6-4263-910E-9CD9DB1A2A4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C498394-7ED6-4263-910E-9CD9DB1A2A4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76094690-7D85-4707-AC55-D109E4126DFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76094690-7D85-4707-AC55-D109E4126DFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76094690-7D85-4707-AC55-D109E4126DFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76094690-7D85-4707-AC55-D109E4126DFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79E6ED6B-16E2-448C-8861-DC4B9F4DFAC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79E6ED6B-16E2-448C-8861-DC4B9F4DFAC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79E6ED6B-16E2-448C-8861-DC4B9F4DFAC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79E6ED6B-16E2-448C-8861-DC4B9F4DFAC2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

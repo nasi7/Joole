@@ -26,6 +26,12 @@ namespace Joole.Controllers
 
             return View();
         }
+
+        public ActionResult ProductDetails()
+        {
+            return View();
+        }
+
         public ActionResult Signup()
         {
             //ViewBag.Message = "Your contact page.";
@@ -61,5 +67,6 @@ namespace Joole.Controllers
 
             return View("search");
         }
+
     }
 }

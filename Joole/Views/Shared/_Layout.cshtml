@@ -3,11 +3,56 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <title></title>
+
 </head>
 <body>
+    @*The entire header layout division*@
+    <div class="header">
+        <img src="~/Content/Images/logo.png" id="logo" name="headerLogo" />
+
+        @*Search bar for the header*@
+        <form id="searchBar">
+
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                    Category
+                    <span class="caret"></span>
+                </button>
+                @*the options for the dropdown menu of the search bar*@
+                <ul class="dropdown-menu">
+                    <li><a href="#">Electronic</a></li>
+                    <li><a href="#">House</a></li>
+                    <li><a href="#">Something</a></li>
+                </ul>
+            </div>
+
+            @*the search text input*@
+            <input type="text" name="searchInput" id="searchInput" placeholder="Search..." />
+            <button id="search-btn"><span class="glyphicon glyphicon-search"></span></button>
+        </form>
+        <input type="image" src="~/Content/Images/dp.png" alt="profilePicture" id="profilePic" /> @*Temp Profile Picture*@
+    </div>
+
+    @*the navigation tab*@
+    <div class="menuTab">
+        <nav id="menu">
+            <ul>
+                <li><a>Product Summary</a></li>
+                <li><a>Product Details</a></li>
+                <li><a>Product Documentation</a></li>
+                <li><a>Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+    @RenderBody()
+
+</body>
+@*<body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -38,5 +83,5 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-</body>
+</body>*@
 </html>
