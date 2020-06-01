@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using JooleCore;
+using JooleRepo;
 
 namespace Joole.Controllers
 {
     public class HomeController : Controller
     {
+        //private JooleDatabaseEntities db = new JooleDatabaseEntities();
+        private UnitOfWork unitOfWork = new UnitOfWork();
+
         public ActionResult Index()
         {
             return View();
@@ -41,12 +46,19 @@ namespace Joole.Controllers
         public ActionResult doSignup(FormCollection col)
         {
             //ViewBag.Message = "Your contact page.";
-            var user_name = col["userName"];
-            var user_email = col["email"];
-            var user_password = col["userPass"];
-            var user_confirmPass = col["confirmPass"];
 
-            return View();
+            var user_confirmPass = col["confirmPass"];
+            var user_image = col["userImage"];
+
+            User user = new User();
+            user.Email = col["email"];
+            user.Password = col["userPass"];
+            user.Username = col["userName"];
+
+            unitOfWork.UserRepository.Add(user);
+            unitOfWork.Complete();
+
+            return View("search");
         }
 
         public ActionResult Search()
