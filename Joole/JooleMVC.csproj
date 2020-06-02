@@ -217,8 +217,7 @@
     <Content Include="Content\Images\logo.png" />
     <Content Include="Content\Product styles\productDetails.css" />
     <Content Include="Content\Product styles\compareDetails.css" />
-    <Content Include="Content\Images\gray.png" />
-    <Content Include="Content\Images\joole_logo.png" />
+    <Content Include="Content\Styles\loginPage.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />

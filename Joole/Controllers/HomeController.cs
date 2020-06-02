@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using JooleCore;
+using JooleRepo;
 using System.Web.Mvc;
 using JooleCore;
 using JooleRepo;
@@ -10,12 +8,29 @@ namespace Joole.Controllers
 {
     public class HomeController : Controller
     {
+
         //private JooleDatabaseEntities db = new JooleDatabaseEntities();
-        private UnitOfWork unitOfWork = new UnitOfWork();
+        UnitOfWork unitOfWork = new UnitOfWork();
 
         public ActionResult Index()
         {
             return View();
+        }
+
+        public ActionResult LogIn()
+        {
+            string username = Request.Form["username"];
+            string password = Request.Form["password"];
+            User validUser = unitOfWork.UserRepository.Get(username);
+            if (validUser != null && validUser.Password == password)
+            {
+                return RedirectToAction("Index", "Users");
+            }
+            else
+            {
+                TempData["invalidUserMessage"] = "<script>alert('Invalid Username or Password');</script>";
+                return RedirectToAction("Index");
+            }
         }
 
         public ActionResult About()

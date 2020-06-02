@@ -1,0 +1,15 @@
+﻿#background {
+    background-image: linear-gradient(cornflowerblue, white);
+    width: 100%;
+    height: 100%;
+}
+
+#signUpButtonContainer {
+    text-align: right;
+    padding-top: 40px;
+}
+
+#logoContainer{
+    align-content:center
+}
+

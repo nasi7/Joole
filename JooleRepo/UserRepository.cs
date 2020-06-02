@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace JooleRepo
 {
-    class UserRepository : Repository<User>, IUserRepository
+    public class UserRepository : Repository<User>
     {
 
         public UserRepository(JooleDatabaseEntities context) : base(context)
@@ -16,9 +16,10 @@ namespace JooleRepo
             get { return context as JooleDatabaseEntities; }
         }
 
-        IEnumerable<User> IUserRepository.getValidUser(string username, string password)
+        public IEnumerable<User> getValidUser(string username, string password)
         {
-            return JBContext.Users.Where(user => user.Username == username).ToList();
+            return JBContext.Users.Where(user => user.Username == username && user.Password == password).ToList();
         }
+
     }
 }

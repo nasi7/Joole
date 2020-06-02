@@ -30,7 +30,7 @@ namespace JooleRepo
 
                 if (this.userRepository == null)
                 {
-                    this.userRepository = new Repository<User>(context);
+                    this.userRepository = new UserRepository(context);
                 }
                 return userRepository;
             }
