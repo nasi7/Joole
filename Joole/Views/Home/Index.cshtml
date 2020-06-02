@@ -18,7 +18,59 @@
 <body>
     <div id="background">
         <div class="container" id="signUpButtonContainer">
-            <button id="signUpButton" class="btn btn-primary">Sign Up</button>
+            @*<button id="signUpButton" class="btn btn-primary">Sign Up</button>*@
+            <a href="#myModal" class="trigger-btn" data-toggle="modal">Sign Up</a>
+        </div>
+        <!-- Modal HTML -->
+        <div id="myModal" class="modal fade">
+            <div class="modal-dialog modal-login">
+                <div class="modal-content">
+                    <form method="post" action="@Url.Action("doSignup", "Home")">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Register as User</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            @*image fields*@
+                            <div class="imageDiv">
+                                <label class="imageLabels">Image Preview</label>
+                                <img class="profilePic" src="~/Content/Images/gray.png" id='img-upload' />
+                                <label class="imageLabels">Your Profile Pic</label>
+                                <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <span class="btn btn-default btn-file">
+                                            Choose File <input type="file" id="imgInp" name="userImage">
+                                        </span>
+                                    </span>
+                                    <input type="text" class="img-form-control" value=" No file chosen" readonly>
+                                </div>
+                            </div>
+                            @*input fields*@
+                            <div class="form-group">
+                                <label class="loginLabels">UserName:</label>
+                                <input type="text" class="form-control" name="userName" placeholder="User Name" required="required">
+                            </div>
+                            <div class="form-group">
+                                <label class="loginLabels">Email Address:</label>
+                                <input type="email" class="form-control" name="email" placeholder="Email Id" required="required">
+                            </div>
+                            <div class="form-group">
+                                <label class="loginLabels">Password:</label>
+                                <input type="password" class="form-control" name="userPass" placeholder="Password" required="required">
+                            </div>
+                            <div class="form-group">
+                                <label class="loginLabels">Confirm Password:</label>
+                                <input type="password" class="form-control" name="confirmPass" placeholder="Password" required="required">
+                            </div>
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <input type="submit" class="btn btn-primary pull-right" value="Sign up">
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
         <div class="text-center" style="margin-top:120px;">
             <img src="~/Content/Images/logo.png" name="headerLogo" width="320" height="160" />
@@ -42,3 +94,40 @@
     </div>
 </body>
 </html>
+<script>
+    $(document).ready(function () {
+        $(document).on('change', '.btn-file :file', function () {
+            var input = $(this),
+                label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+            input.trigger('fileselect', [label]);
+        });
+
+        $('.btn-file :file').on('fileselect', function (event, label) {
+
+            var input = $(this).parents('.input-group').find(':text'),
+                log = label;
+
+            if (input.length) {
+                input.val(log);
+            } else {
+                if (log) alert(log);
+            }
+
+        });
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#img-upload').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#imgInp").change(function () {
+            readURL(this);
+        });
+    });
+</script>
