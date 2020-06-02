@@ -385,6 +385,10 @@
       <Project>{76094690-7d85-4707-ac55-d109e4126dfd}</Project>
       <Name>JooleRepo</Name>
     </ProjectReference>
+    <ProjectReference Include="..\JooleService\JooleService.csproj">
+      <Project>{79e6ed6b-16e2-448c-8861-dc4b9f4dfac2}</Project>
+      <Name>JooleService</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
