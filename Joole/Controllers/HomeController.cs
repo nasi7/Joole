@@ -17,6 +17,7 @@ namespace Joole.Controllers
             string username = Request.Form["username"];
             string password = Request.Form["password"];
             User validUser = unitOfWork.UserRepository.Get(username);
+
             if (validUser != null && validUser.Password == password)
             {
                 return RedirectToAction("Index", "Users");
@@ -78,7 +79,7 @@ namespace Joole.Controllers
 
             var sub = col["subCategory"];
             System.Diagnostics.Debug.WriteLine("\ndoSearch called!\n");
-  
+
 
             return View("search");
         }
