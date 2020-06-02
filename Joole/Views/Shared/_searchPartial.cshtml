@@ -1,11 +1,8 @@
 ﻿<style>
 
-    html {
-        background-image: linear-gradient(#2474a7,#f9fafc);
-        height: 100%;
-    }
 
-    .logoImage {
+
+    @*.logoImage {
         height: 10%;
         width: 20%;
         display: block;
@@ -20,7 +17,7 @@
         margin-top: 1.7%;
         font-weight: 500;
         text-align: center;
-    }
+    }*@
     .btn.btn-secondary.dropdown-toggle {
         background-color:#2273a0;
         height:100%;
@@ -72,11 +69,11 @@
 
 <body style="background-color: transparent;">
 
-    <img class="logoImage" src="~/Content/Images/joole_logo.png" alt="Joole Logo">
+    @*<img class="logoImage" src="~/Content/Images/joole_logo.png" alt="Joole Logo">
 
     <div class="desc">
         Building Product Selection Platform
-    </div>
+    </div>*@
 
     <form class="search" method="post" action="@Url.Action("doSearch", "Home")">
         <div class="dropdown">
