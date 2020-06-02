@@ -1,12 +1,17 @@
 ﻿using JooleCore;
 using JooleRepo;
 using System.Web.Mvc;
+using JooleCore;
+using JooleRepo;
 
 namespace Joole.Controllers
 {
     public class HomeController : Controller
     {
+
+        //private JooleDatabaseEntities db = new JooleDatabaseEntities();
         UnitOfWork unitOfWork = new UnitOfWork();
+
         public ActionResult Index()
         {
             return View();
@@ -57,12 +62,19 @@ namespace Joole.Controllers
         public ActionResult doSignup(FormCollection col)
         {
             //ViewBag.Message = "Your contact page.";
-            var user_name = col["userName"];
-            var user_email = col["email"];
-            var user_password = col["userPass"];
-            var user_confirmPass = col["confirmPass"];
 
-            return View();
+            var user_confirmPass = col["confirmPass"];
+            var user_image = col["userImage"];
+
+            User user = new User();
+            user.Email = col["email"];
+            user.Password = col["userPass"];
+            user.Username = col["userName"];
+
+            unitOfWork.UserRepository.Add(user);
+            unitOfWork.Complete();
+
+            return View("search");
         }
 
         public ActionResult Search()
@@ -77,9 +89,20 @@ namespace Joole.Controllers
         {
             //ViewBag.Message = "Your contact page.";
 
-            var sub = col["subCategory"];
+            /*var sub = col["subCategory"];*/
+
+            string sub = "TableSaws";
             System.Diagnostics.Debug.WriteLine("\ndoSearch called!\n");
 
+            Product prod = new Product();
+
+            var prods = unitOfWork.ProductRepository.Find(product => product.SubCategory == sub);
+
+            /*System.Diagnostics.Debug.WriteLine(prods.ToList()[0]);*/
+
+            /*foreach (var p in prods) {*/
+            System.Diagnostics.Debug.WriteLine(prods.ToList()[0].ProductName);
+            
 
             return View("search");
         }

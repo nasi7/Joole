@@ -10,6 +10,7 @@ namespace JooleRepo
 
         private JooleDatabaseEntities context = new JooleDatabaseEntities();
         private Repository<User> userRepository;
+        private Repository<Product> productRepository;
 
 
         /* public UnitOfWork(PlutoContext context)
@@ -32,6 +33,19 @@ namespace JooleRepo
                     this.userRepository = new UserRepository(context);
                 }
                 return userRepository;
+            }
+        }
+
+        public Repository<Product> ProductRepository
+        {
+            get
+            {
+
+                if (this.productRepository == null)
+                {
+                    this.productRepository = new Repository<Product>(context);
+                }
+                return productRepository;
             }
         }
 

@@ -1,0 +1,50 @@
+﻿@model IEnumerable<JooleCore.Product>
+
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<style>
+    body {
+        margin:0px;
+    }
+
+    .headerBar {
+        background-image: linear-gradient(#2474a7,#f9fafc);
+        height: 100%;
+        width:100%;
+    }
+
+    .logoImage {
+        height: 3%;
+        width: 10%;
+        display: block;
+        padding: 1.5% 0px 1.5% 1.5%;
+        @*margin-left: auto;
+        margin-right: auto;
+        margin-top: 10%;*@
+    }
+</style>
+
+
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ProductSummary</title>
+
+
+</head>
+<body>
+    <div class="headerBar">
+        <img class="logoImage" src="~/Content/Images/joole_logo.png" alt="Joole Logo">
+        @{ Html.RenderPartial("_searchPartial");}
+
+
+    </div>
+</body>
+</html>
