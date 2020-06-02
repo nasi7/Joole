@@ -1,8 +1,6 @@
 ﻿using JooleCore;
 using JooleRepo;
 using System.Web.Mvc;
-using JooleCore;
-using JooleRepo;
 
 namespace Joole.Controllers
 {
@@ -75,6 +73,7 @@ namespace Joole.Controllers
             unitOfWork.Complete();
 
             return View("search");
+            //return RedirectToAction("Index", "Users");
         }
 
         public ActionResult Search()
@@ -101,8 +100,8 @@ namespace Joole.Controllers
             /*System.Diagnostics.Debug.WriteLine(prods.ToList()[0]);*/
 
             /*foreach (var p in prods) {*/
-            System.Diagnostics.Debug.WriteLine(prods.ToList()[0].ProductName);
-            
+            //System.Diagnostics.Debug.WriteLine(prods.ToList()[0].ProductName);
+
 
             return View("search");
         }
