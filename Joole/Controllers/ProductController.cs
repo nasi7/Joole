@@ -22,5 +22,25 @@ namespace Joole.Controllers
         {
             return View();
         }
+
+        public ActionResult ProductSummary()
+        {
+            return View();
+        }
+
+        public ActionResult fanFilter(FormCollection col)
+        {
+
+
+            return View("ProductSummary");
+        }
+
+        public ActionResult vacuumFilter(FormCollection col)
+        {
+
+
+            return View("ProductSummary");
+        }
+
     }
 }

@@ -6,5 +6,7 @@ namespace JooleRepo
     {
         IUserRepository Users { get; }
 
+        IProductRepository products { get; }
+
     }
 }

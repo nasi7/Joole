@@ -73,9 +73,20 @@ namespace Joole.Controllers
         {
             //ViewBag.Message = "Your contact page.";
 
-            var sub = col["subCategory"];
+            /*var sub = col["subCategory"];*/
+
+            string sub = "TableSaws";
             System.Diagnostics.Debug.WriteLine("\ndoSearch called!\n");
-  
+
+            Product prod = new Product();
+
+            var prods = unitOfWork.ProductRepository.Find(product => product.SubCategory == sub);
+
+            /*System.Diagnostics.Debug.WriteLine(prods.ToList()[0]);*/
+
+            /*foreach (var p in prods) {*/
+            System.Diagnostics.Debug.WriteLine(prods.ToList()[0].ProductName);
+            
 
             return View("search");
         }
