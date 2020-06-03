@@ -44,6 +44,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\JooleCore\JooleCore.csproj">
+      <Project>{5c498394-7ed6-4263-910e-9cd9db1a2a4e}</Project>
+      <Name>JooleCore</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JooleRepo\JooleRepo.csproj">
       <Project>{76094690-7d85-4707-ac55-d109e4126dfd}</Project>
       <Name>JooleRepo</Name>

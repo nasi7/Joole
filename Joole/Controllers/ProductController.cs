@@ -1,5 +1,4 @@
 ﻿using System.Web.Mvc;
-
 namespace Joole.Controllers
 {
     public class ProductController : Controller
