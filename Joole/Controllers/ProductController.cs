@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Joole.Views.ProductVM;
+using JooleCore;
+using JooleRepo;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Joole.Controllers
@@ -9,6 +9,7 @@ namespace Joole.Controllers
     public class ProductController : Controller
     {
         // GET: Product
+        private UnitOfWork unitOfWork = new UnitOfWork();
         public ActionResult Index()
         {
             return View();
@@ -27,12 +28,19 @@ namespace Joole.Controllers
         {
             return View();
         }
-
-        public ActionResult fanFilter(FormCollection col)
+        public ActionResult fanSummary(string id)
         {
-
-
-            return View("ProductSummary");
+            FanVM fanModel = new FanVM();
+            fanModel.FanDetail = unitOfWork.FanRepository.Get(id);
+            fanModel.ProductFanDetail = unitOfWork.ProductRepository.Get(id);
+            return View(fanModel);
+        }
+        public ActionResult fanFilter(/*FormCollection col*/)
+        {
+            FanVM fanModel = new FanVM();
+            fanModel.Fans = unitOfWork.FanRepository.GetAll();
+            fanModel.Products = unitOfWork.ProductRepository.GetAll();
+            return View(fanModel);
         }
 
         public ActionResult vacuumFilter(FormCollection col)

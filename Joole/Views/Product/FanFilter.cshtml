@@ -1,0 +1,173 @@
+﻿@using JooleCore;
+@model dynamic
+
+@{
+    ViewBag.Title = "fanPage";
+}
+
+    <header>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="~/Content/Styles/FanFilterPage.css" rel="stylesheet" />
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="/resources/demos/style.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="~/Scripts/ProductView/fanFilter.js"></script>
+    </header>
+
+<div id="fanSideFilter">
+    <form>
+        <div class="filterSearch">
+            <label>Search:</label><input type="reset" value="Clear" /><input type="submit" value="Save" />
+        </div>
+        <table class="filterNav">
+            <tr>
+                <th><a>Product</a></th>
+                <th><a>Project</a></th>
+            </tr>
+        </table>
+        <div class="productTypeTab">
+            <label>Product Type</label>
+            <i class="fa fa-caret-down fa-2x"></i>
+        </div>
+        <div class="model-year">
+            <label>Model Year:</label>
+            <input id="model-year-from" />&mdash;<input id="model-year-until" />
+        </div>
+        <div class="tech-spec-tab">
+            <label>Technical Specifications</label>
+            <i class="fa fa-caret-down fa-2x"></i>
+        </div>
+        <div class="spec-range">
+            <table>
+                <tr>
+
+                    <th><i class="fa fa-exchange fa-rotate-90"></i><label>Airflow(CFM)</label></th>
+                </tr>
+                <tr>
+                    <td><input type="text" id="airflow-min" /><div id="airflow-range"></div><input type="text" id="airflow-max" /></td>
+                </tr>
+                <tr>
+
+                    <th><i class="fa fa-exchange fa-rotate-90"></i><label>Max Power (W)</label></th>
+                </tr>
+                <tr>
+                    <td><input type="text" id="power-min" /><div id="power-range"></div><input type="text" id="power-max" /></td>
+                </tr>
+                <tr>
+
+                    <th><i class="fa fa-exchange fa-rotate-90"></i><label>Sound at Max speed (dBA)</label></th>
+                </tr>
+                <tr>
+                    <td><input type="text" id="sound-min" /><div id="sound-range"></div><input type="text" id="sound-max" /></td>
+                </tr>
+                <tr>
+
+                    <th><i class="fa fa-exchange fa-rotate-90"></i><label>Fan sweep diameter(in)</label></th>
+                </tr>
+                <tr>
+                    <td><input type="text" id="fan-diameter-min" /><div id="fan-diameter-range"></div><input type="text" id="fan-diameter-max" /></td>
+                </tr>
+            </table>
+        </div>        
+    </form>
+
+</div>
+
+@*<script>
+    $(function () {
+        $("#airflow-range").slider({
+            range: true,
+            min: 0,
+            max: 500,
+            values: [75, 300],
+            slide: function (event, ui) {
+                $("#airflow-min").val(ui.values[0]);
+                $("#airflow-max").val(ui.values[1]);
+             
+            }
+        });
+        //$("#min").val( $("#slider-range").slider("values", 0));
+        //$("#max").val( $("#slider-range").slider("values", 1));
+    });
+
+    $(function () {
+        $("#power-range").slider({
+            range: true,
+            min: 0,
+            max: 500,
+            values: [75, 300],
+            slide: function (event, ui) {
+                $("#power-min").val(ui.values[0]);
+                $("#power-max").val(ui.values[1]);
+
+            }
+        });
+    });
+
+    $(function () {
+        $("#sound-range").slider({
+            range: true,
+            min: 0,
+            max: 500,
+            values: [75, 300],
+            slide: function (event, ui) {
+                $("#sound-min").val(ui.values[0]);
+                $("#sound-max").val(ui.values[1]);
+
+            }
+        });
+    });
+
+    $(function () {
+        $("#fan-diameter-range").slider({
+            range: true,
+            min: 0,
+            max: 500,
+            values: [75, 300],
+            slide: function (event, ui) {
+                $("#fan-diameter-min").val(ui.values[0]);
+                $("#fan-diameter-max").val(ui.values[1]);
+
+            }
+        });
+    });
+</script>*@
+
+<div id="products">
+    @foreach (Fan fan in Model.Fans)
+    {
+        <div class="allFans" style="margin-bottom:8px">
+            <div class="thumbnail">
+                <a href="@Url.Action("fanSummary","Product",new { id = fan.ModelNumber})">
+                    <img class="img-responsive" title="Click to View Product detail"
+                         style="cursor:pointer;height:160px;width:100%" />
+                </a>
+
+
+                <div class="caption">
+                    @foreach (Product product in Model.Products)
+                    {
+                        if (fan.ModelNumber == product.ModelNumber)
+                        {
+                            <h5>@product.Manufacturer</h5>
+                        }
+                    }
+
+
+
+                    <p>@fan.ModelNumber</p>
+                    <p>@fan.Airflow CFM</p>
+                    <p>@fan.PowerMax at max speed</p>
+                    <p>@fan.SpeedSound at max speed</p>
+                    <p>@fan.SweepDiameter fan sweep diameter</p>
+
+                </div>
+            </div>
+        </div>
+
+    }
+</div>
+
+
+
