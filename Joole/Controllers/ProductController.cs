@@ -13,9 +13,6 @@ namespace Joole.Controllers
 {
     public class ProductController : Controller
     {
-
-        UnitOfWork unitOfWork = new UnitOfWork();
-
         // GET: Product
         private UnitOfWork unitOfWork = new UnitOfWork();
         public ActionResult Index()
@@ -176,7 +173,7 @@ namespace Joole.Controllers
                          join c in couches on p.ModelNumber equals c.ModelNumber
                          select new { Manufacturer = p.Manufacturer, ProductName = p.ProductName, ModelNumber = p.ModelNumber, FillingMaterial=c.FillingMaterial, SurfaceMaterial=c.SurfaceMaterial, Dimension = c.Dimension};
 
-            return View("ProductSummary");
+            return View();
         }
 
         public ActionResult tableFilter(FormCollection col)

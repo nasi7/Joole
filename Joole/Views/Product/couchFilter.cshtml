@@ -1,0 +1,55 @@
+﻿@using JooleCore;
+@model dynamic
+
+@{
+    ViewBag.Title = "couchFilter";
+}
+
+
+<header>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/Content/Styles/FanFilterPage.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="~/Scripts/ProductView/fanFilter.js"></script>
+</header>
+
+<div id="products">
+    @foreach (Couch couch in Model.Couches)
+    {
+        <div class="allFans" style="margin-bottom:8px">
+            <div class="thumbnail">
+                <a href="@Url.Action("couchSummary","Product",new { id = couch.ModelNumber})">
+                    <img class="img-responsive" title="Click to View Product detail"
+                         style="cursor:pointer;height:160px;width:100%" />
+                </a>
+
+
+                <div class="caption">
+                    @foreach (Product product in Model.Products)
+                    {
+                        if (couch.ModelNumber == product.ModelNumber)
+                        {
+                            <h5>@product.Manufacturer</h5>
+                        }
+                    }
+
+
+
+                    <p>@couch.ModelNumber</p>
+                    <p>@couch.FillingMaterial Filling Material</p>
+                    <p>@couch.SurfaceMaterial Surface Material</p>
+                    <p>@couch.Dimension Dimension</p>
+
+                </div>
+            </div>
+        </div>
+
+    }
+</div>
+
+
+
+

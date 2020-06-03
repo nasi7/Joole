@@ -14,7 +14,7 @@ namespace JooleRepo
         private Repository<Fan> fanRepository;
 
         public Repository<Couch> couchRepository = new Repository<Couch>(new JooleDatabaseEntities());
-        public Repository<Fan> fanRepository = new Repository<Fan>(new JooleDatabaseEntities());
+        //public Repository<Fan> fanRepository = new Repository<Fan>(new JooleDatabaseEntities());
         public Repository<Table> tableRepository = new Repository<Table>(new JooleDatabaseEntities());
         public Repository<TableSaw> tablesawRepository = new Repository<TableSaw>(new JooleDatabaseEntities());
         public Repository<Toaster> toasterRepository = new Repository<Toaster>(new JooleDatabaseEntities());
