@@ -35,5 +35,6 @@ namespace JooleRepo
         {
             return dbSet.ToList();
         }
+
     }
 }
