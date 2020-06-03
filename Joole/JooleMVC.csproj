@@ -360,6 +360,7 @@
     <Content Include="Views\Product\Compare.cshtml" />
     <Content Include="Views\Product\ProductDetails.cshtml" />
     <Content Include="Views\Product\ProductSummary.cshtml" />
+    <Content Include="Views\Product\testFilter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -384,6 +385,10 @@
     <ProjectReference Include="..\JooleRepo\JooleRepo.csproj">
       <Project>{76094690-7d85-4707-ac55-d109e4126dfd}</Project>
       <Name>JooleRepo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JooleService\JooleService.csproj">
+      <Project>{79e6ed6b-16e2-448c-8861-dc4b9f4dfac2}</Project>
+      <Name>JooleService</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
