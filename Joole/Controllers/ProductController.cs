@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using System.Dynamic;
 
 
 namespace Joole.Controllers
@@ -156,9 +157,11 @@ namespace Joole.Controllers
 
             var result = from p in prods
                          join v in vacs on p.ModelNumber equals v.ModelNumber
-                         select new { Manufacturer = p.Manufacturer, ProductName = p.ProductName, ModelNumber = p.ModelNumber, Power = v.Power, Voltage = v.Voltage, CordLength = v.CordLength, Capacity = v.Capacity};
+                         select new { Manufacturer = p.Manufacturer, ProductName = p.ProductName, ModelNumber = p.ModelNumber, Power = v.Power, Voltage = v.Voltage, CordLength = v.CordLength, Capacity = v.Capacity };
 
-            return View("ProductSummary");
+            ViewBag.result = result;
+
+            return View(result);
         }
 
         public ActionResult couchFilter(FormCollection col)
@@ -317,7 +320,7 @@ namespace Joole.Controllers
 
             var result = from p in prods
                          join t in tv on p.ModelNumber equals t.ModelNumber
-                         select new { Manufacturer = p.Manufacturer, ProductName = p.ProductName, ModelNumber = p.ModelNumber, Power = t.Power, Voltage = t.Voltage, ScreenSize = t.ScreenSize, InputTypes = t.InputTypes, OutputTypes = t.OutputTypes };
+                         select (Manufacturer: p.Manufacturer, ProductName: p.ProductName, ModelNumber: p.ModelNumber, Power: t.Power, Voltage: t.Voltage, ScreenSize: t.ScreenSize, InputTypes: t.InputTypes, OutputTypes: t.OutputTypes);
 
             return View("ProductSummary");
         }
@@ -328,5 +331,14 @@ namespace Joole.Controllers
 
             return View();
         }
+
+       /* public static ExpandoObject ToExpando(this object anonymousObject)
+        {
+            IDictionary<string, object> anonymousDictionary = new RouteValueDictionary(anonymousObject);
+            IDictionary<string, object> expando = new ExpandoObject();
+            foreach (var item in anonymousDictionary)
+                expando.Add(item);
+            return (ExpandoObject)expando;
+        }*/
     }
 }
