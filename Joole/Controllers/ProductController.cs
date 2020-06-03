@@ -14,7 +14,7 @@ namespace Joole.Controllers
     public class ProductController : Controller
     {
 
-        UnitOfWork unitOfWork = new UnitOfWork();
+       // UnitOfWork unitOfWork = new UnitOfWork();
 
         // GET: Product
         private UnitOfWork unitOfWork = new UnitOfWork();

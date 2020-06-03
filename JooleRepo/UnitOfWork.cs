@@ -11,7 +11,6 @@ namespace JooleRepo
         private JooleDatabaseEntities context = new JooleDatabaseEntities();
         private Repository<User> userRepository;
         private Repository<Product> productRepository;
-        private Repository<Fan> fanRepository;
 
         public Repository<Couch> couchRepository = new Repository<Couch>(new JooleDatabaseEntities());
         public Repository<Fan> fanRepository = new Repository<Fan>(new JooleDatabaseEntities());
