@@ -205,6 +205,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\ProductVM\CouchVM.cs" />
     <Compile Include="Views\ProductVM\FanVM.cs" />
+    <Compile Include="Views\ProductVM\VacuumVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -222,6 +223,7 @@
     <Content Include="Content\Styles\couchFilter.css" />
     <Content Include="Content\Styles\loginPage.css" />
     <Content Include="Content\Styles\FanFilterPage.css" />
+    <Content Include="Content\Styles\VacuumFIlterPage.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -264,6 +266,7 @@
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
     <Content Include="Scripts\ProductView\fanFilter.js" />
+    <Content Include="Scripts\ProductView\vacuumFIlter.js" />
     <Content Include="Scripts\src\index.js" />
     <Content Include="Scripts\src\methods\defaults.js" />
     <Content Include="Scripts\src\methods\destroy.js" />
@@ -367,6 +370,7 @@
     <Content Include="Views\Product\ProductSummary.cshtml" />
     <Content Include="Views\Product\fanFilter.cshtml" />
     <Content Include="Views\Product\couchFilter.cshtml" />
+    <Content Include="Views\Product\vacuumFilter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
