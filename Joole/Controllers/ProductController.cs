@@ -1,5 +1,6 @@
 ﻿using JooleCore;
 using JooleRepo;
+using Microsoft.Ajax.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -110,20 +111,75 @@ namespace Joole.Controllers
 
         public ActionResult vacuumFilter(FormCollection col)
         {
+            var year_min = 2018;
+            var year_max = 2050;
 
+            var power_min = 0.0;
+            var power_max = 9999.0;
+
+            var voltage_min = 0.0;
+            var voltage_max = 9999.0;
+
+            var cord_min = 0.0;
+            var cord_max = 333.33;
+
+            var capacity_min = 0.0;
+            var capacity_max = 9999.99;
+
+
+            var prods = unitOfWork.ProductRepository.GetAll();
+            prods = prods.Where(x => Convert.ToInt32(x.ModelYear) >= year_min);
+            prods = prods.Where(x => Convert.ToInt32(x.ModelYear) <= year_max);
+
+            var vacs = unitOfWork.vacummRepository.GetAll();
+            vacs = vacs.Where(x => float.Parse(x.Power) >= power_min);
+            vacs = vacs.Where(x => float.Parse(x.Power) <= power_max);
+            vacs = vacs.Where(x => float.Parse(x.Voltage) >= voltage_min);
+            vacs = vacs.Where(x => float.Parse(x.Voltage) <= voltage_max);
+            vacs = vacs.Where(x => float.Parse(x.CordLength) >= cord_min);
+            vacs = vacs.Where(x => float.Parse(x.CordLength) <= cord_max);
+            vacs = vacs.Where(x => float.Parse(x.Capacity) >= capacity_min);
+            vacs = vacs.Where(x => float.Parse(x.Capacity) <= capacity_max);
+
+            var result = from p in prods
+                         join v in vacs on p.ModelNumber equals v.ModelNumber
+                         select new { Manufacturer = p.Manufacturer, ProductName = p.ProductName, ModelNumber = p.ModelNumber, Power = v.Power, Voltage = v.Voltage, CordLength = v.CordLength, Capacity = v.Capacity};
 
             return View("ProductSummary");
         }
 
         public ActionResult couchFilter(FormCollection col)
         {
+            var year_min = 2018;
+            var year_max = 2050;
 
+            var prods = unitOfWork.ProductRepository.GetAll();
+            prods = prods.Where(x => Convert.ToInt32(x.ModelYear) >= year_min);
+            prods = prods.Where(x => Convert.ToInt32(x.ModelYear) <= year_max);
+
+            var couches = unitOfWork.couchRepository.GetAll();
+
+            var result = from p in prods
+                         join c in couches on p.ModelNumber equals c.ModelNumber
+                         select new { Manufacturer = p.Manufacturer, ProductName = p.ProductName, ModelNumber = p.ModelNumber, FillingMaterial=c.FillingMaterial, SurfaceMaterial=c.SurfaceMaterial, Dimension = c.Dimension};
 
             return View("ProductSummary");
         }
 
         public ActionResult tableFilter(FormCollection col)
         {
+            var year_min = 2018;
+            var year_max = 2050;
+
+            var prods = unitOfWork.ProductRepository.GetAll();
+            prods = prods.Where(x => Convert.ToInt32(x.ModelYear) >= year_min);
+            prods = prods.Where(x => Convert.ToInt32(x.ModelYear) <= year_max);
+
+            var tables = unitOfWork.tableRepository.GetAll();
+
+            var result = from p in prods
+                         join t in tables on p.ModelNumber equals t.ModelNumber
+                         select new { Manufacturer = p.Manufacturer, ProductName = p.ProductName, ModelNumber = p.ModelNumber, Material = t.Material, Style = t.Style, Dimension = t.Dimension };
 
 
             return View("ProductSummary");
@@ -131,25 +187,124 @@ namespace Joole.Controllers
 
         public ActionResult tablesawFilter(FormCollection col)
         {
+            var year_min = 2018;
+            var year_max = 2050;
+
+            var power_min = 0.0;
+            var power_max = 9999.9;
+
+            var volt_min = 0.0;
+            var volt_max = 9999.9;
+
+            var amp_min = 0.0;
+            var amp_max = 9999.9;
+
+            var speed_min = 0.0;
+            var speed_max = 9999.9;
+
+            var prods = unitOfWork.ProductRepository.GetAll();
+            prods = prods.Where(x => Convert.ToInt32(x.ModelYear) >= year_min);
+            prods = prods.Where(x => Convert.ToInt32(x.ModelYear) <= year_max);
+
+            var saws = unitOfWork.tablesawRepository.GetAll();
+            saws = saws.Where(x => float.Parse(x.Power) >= power_min);
+            saws = saws.Where(x => float.Parse(x.Power) <= power_max);
+            saws = saws.Where(x => float.Parse(x.Voltage) >= volt_min);
+            saws = saws.Where(x => float.Parse(x.Voltage) <= volt_max);
+            saws = saws.Where(x => float.Parse(x.Amperes) >= amp_min);
+            saws = saws.Where(x => float.Parse(x.Amperes) <= amp_max);
+            saws = saws.Where(x => float.Parse(x.Speed) >= speed_min);
+            saws = saws.Where(x => float.Parse(x.Speed) <= speed_max);
+
+
+            var result = from p in prods
+                         join s in saws on p.ModelNumber equals s.ModelNumber
+                         select new { Manufacturer = p.Manufacturer, ProductName = p.ProductName, ModelNumber = p.ModelNumber, Power = s.Power, Voltage = s.Voltage, Amperes = s.Amperes, Speed = s.Speed };
 
 
             return View("ProductSummary");
+
         }
         public ActionResult workbenchFilter(FormCollection col)
         {
+            var year_min = 2018;
+            var year_max = 2050;
 
+            var prods = unitOfWork.ProductRepository.GetAll();
+            prods = prods.Where(x => Convert.ToInt32(x.ModelYear) >= year_min);
+            prods = prods.Where(x => Convert.ToInt32(x.ModelYear) <= year_max);
+
+            var benches = unitOfWork.WorkbenchRepository.GetAll();
+
+            var result = from p in prods
+                         join b in benches on p.ModelNumber equals b.ModelNumber
+                         select new { Manufacturer = p.Manufacturer, ProductName = p.ProductName, ModelNumber = p.ModelNumber, Dimension = b.Dimension, SurfaceMaterial = b.SurfaceMaterial};
 
             return View("ProductSummary");
         }
         public ActionResult toasterFilter(FormCollection col)
         {
+            var year_min = 2018;
+            var year_max = 2050;
 
+            var power_min = 0.0;
+            var power_max = 9999.9;
+
+            var volt_min = 0.0;
+            var volt_max = 9999.9;
+
+            var heat_min = 0.0;
+            var heat_max = 9999.9;
+
+            var prods = unitOfWork.ProductRepository.GetAll();
+            prods = prods.Where(x => Convert.ToInt32(x.ModelYear) >= year_min);
+            prods = prods.Where(x => Convert.ToInt32(x.ModelYear) <= year_max);
+
+            var toasters = unitOfWork.toasterRepository.GetAll();
+            toasters = toasters.Where(x => float.Parse(x.Power) >= power_min);
+            toasters = toasters.Where(x => float.Parse(x.Power) <= power_max);
+            toasters = toasters.Where(x => float.Parse(x.Voltage) >= volt_min);
+            toasters = toasters.Where(x => float.Parse(x.Voltage) <= volt_max);
+            toasters = toasters.Where(x => float.Parse(x.HeatingLevel) >= heat_min);
+            toasters = toasters.Where(x => float.Parse(x.HeatingLevel) <= heat_max);
+
+
+            var result = from p in prods
+                         join t in toasters on p.ModelNumber equals t.ModelNumber
+                         select new { Manufacturer = p.Manufacturer, ProductName = p.ProductName, ModelNumber = p.ModelNumber, Power = t.Power, Voltage = t.Voltage, HeatingLevel = t.HeatingLevel };
 
             return View("ProductSummary");
         }
         public ActionResult tvFilter(FormCollection col)
         {
+            var year_min = 2018;
+            var year_max = 2050;
 
+            var power_min = 0.0;
+            var power_max = 9999.9;
+
+            var volt_min = 0.0;
+            var volt_max = 9999.9;
+
+            var screen_min = 0.0;
+            var screen_max = 9999.9;
+
+            var prods = unitOfWork.ProductRepository.GetAll();
+            prods = prods.Where(x => Convert.ToInt32(x.ModelYear) >= year_min);
+            prods = prods.Where(x => Convert.ToInt32(x.ModelYear) <= year_max);
+
+            var tv = unitOfWork.tvRepository.GetAll();
+            tv = tv.Where(x => float.Parse(x.Power) >= power_min);
+            tv = tv.Where(x => float.Parse(x.Power) <= power_max);
+            tv = tv.Where(x => float.Parse(x.Voltage) >= volt_min);
+            tv = tv.Where(x => float.Parse(x.Voltage) <= volt_max);
+            tv = tv.Where(x => float.Parse(x.ScreenSize) >= screen_min);
+            tv = tv.Where(x => float.Parse(x.ScreenSize) <= screen_max);
+
+
+            var result = from p in prods
+                         join t in tv on p.ModelNumber equals t.ModelNumber
+                         select new { Manufacturer = p.Manufacturer, ProductName = p.ProductName, ModelNumber = p.ModelNumber, Power = t.Power, Voltage = t.Voltage, ScreenSize = t.ScreenSize, InputTypes = t.InputTypes, OutputTypes = t.OutputTypes };
 
             return View("ProductSummary");
         }
