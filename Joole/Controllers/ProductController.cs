@@ -1,16 +1,13 @@
-
-using Joole.Views.ProductVM;
 using JooleRepo;
 using System;
 using System.Linq;
 using System.Web.Mvc;
-using System.Dynamic;
-
 
 namespace Joole.Controllers
 {
     public class ProductController : Controller
     {
+        UnitOfWork unitOfWork = new UnitOfWork();
         // GET: Product
         public ActionResult Index()
         {
@@ -114,19 +111,19 @@ namespace Joole.Controllers
             //return View("testFilter");
         }
 
-      
+
         public ActionResult vacuumFilter(FormCollection col)
         {
 
-            if (col["year-min"] == null) 
+            if (col["year-min"] == null)
             {
                 var t_prods = unitOfWork.ProductRepository.GetAll();
                 var t_vacs = unitOfWork.vacummRepository.GetAll();
                 var t_result = from p in t_prods
-                             join v in t_vacs on p.ModelNumber equals v.ModelNumber
-                             select new { Manufacturer = p.Manufacturer, ProductName = p.ProductName, ModelNumber = p.ModelNumber, Power = v.Power, Voltage = v.Voltage, CordLength = v.CordLength, Capacity = v.Capacity };
+                               join v in t_vacs on p.ModelNumber equals v.ModelNumber
+                               select new { Manufacturer = p.Manufacturer, ProductName = p.ProductName, ModelNumber = p.ModelNumber, Power = v.Power, Voltage = v.Voltage, CordLength = v.CordLength, Capacity = v.Capacity };
                 ViewBag.result = t_result;
-                return View(t_result); 
+                return View(t_result);
             }
 
             var year_min = float.Parse(col["year-min"]);
@@ -337,13 +334,13 @@ namespace Joole.Controllers
             return View();
         }
 
-       /* public static ExpandoObject ToExpando(this object anonymousObject)
-        {
-            IDictionary<string, object> anonymousDictionary = new RouteValueDictionary(anonymousObject);
-            IDictionary<string, object> expando = new ExpandoObject();
-            foreach (var item in anonymousDictionary)
-                expando.Add(item);
-            return (ExpandoObject)expando;
-        }*/
+        /* public static ExpandoObject ToExpando(this object anonymousObject)
+         {
+             IDictionary<string, object> anonymousDictionary = new RouteValueDictionary(anonymousObject);
+             IDictionary<string, object> expando = new ExpandoObject();
+             foreach (var item in anonymousDictionary)
+                 expando.Add(item);
+             return (ExpandoObject)expando;
+         }*/
     }
 }
