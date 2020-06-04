@@ -16,7 +16,7 @@
 </header>
 
 <div id="fanSideFilter">
-    <form>
+    <form action="/Product/vacuumFilter" method="post">
         <div class="filterSearch">
             <label>Search:</label><input type="reset" value="Clear" /><input type="submit" value="Save" />
         </div>
@@ -32,7 +32,7 @@
         </div>
         <div class="model-year">
             <label>Model Year:</label>
-            <input id="model-year-from" />&mdash;<input id="model-year-until" />
+            <input id="model-year-from" name="year-min"/>&mdash;<input id="model-year-until" name="year-max"/>
         </div>
         <div class="tech-spec-tab">
             <label>Technical Specifications</label>
@@ -45,28 +45,28 @@
                     <th><i class="fa fa-exchange fa-rotate-90"></i><label>Max Power (W)</label></th>
                 </tr>
                 <tr>
-                    <td><input type="text" id="power-min" /><div id="power-range"></div><input type="text" id="power-max" /></td>
+                    <td><input type="text" id="power-min" name="power-min"/><div id="power-range"></div><input type="text" id="power-max" name="power-max"/></td>
                 </tr>
                 <tr>
 
                     <th><i class="fa fa-exchange fa-rotate-90"></i><label>Operating Voltage (V)</label></th>
                 </tr>
                 <tr>
-                    <td><input type="text" id="volt-min" /><div id="volt-range"></div><input type="text" id="volt-max" /></td>
+                    <td><input type="text" id="volt-min" name="volt-min"/><div id="volt-range"></div><input type="text" id="volt-max" name="volt-max"/></td>
                 </tr>
                 <tr>
 
                     <th><i class="fa fa-exchange fa-rotate-90"></i><label>Cord Length (m)</label></th>
                 </tr>
                 <tr>
-                    <td><input type="text" id="cord-min" /><div id="cord-range"></div><input type="text" id="cord-max" /></td>
+                    <td><input type="text" id="cord-min" name="cord-min"/><div id="cord-range"></div><input type="text" id="cord-max" name="cord-max"/></td>
                 </tr>
                 <tr>
 
                     <th><i class="fa fa-exchange fa-rotate-90"></i><label>Bag Capacity (L)</label></th>
                 </tr>
                 <tr>
-                    <td><input type="text" id="Capacity-min" /><div id="Capacity-range"></div><input type="text" id="Capacity-max" /></td>
+                    <td><input type="text" id="Capacity-min" name="Capacity-min"/><div id="Capacity-range"></div><input type="text" id="Capacity-max" name="Capacity-max"/></td>
                 </tr>
             </table>
         </div>
