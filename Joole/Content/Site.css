@@ -35,7 +35,53 @@ textarea {
     height: 100%;
 }
 
-#searchBar {
+.btn.btn-secondary.dropdown-toggle {
+    background-color: #2273a0;
+    height: 100%;
+    color: #0080ff;
+    font-weight: 500;
+}
+
+.dropdown-item {
+    font-weight: 500;
+    font-size: 9pt;
+}
+
+.form-control.form-control-lg {
+    float: left;
+    width: 20%;
+    margin-top: 2%;
+    height: 3%;
+    font-size: 8pt;
+    font-weight: 700;
+}
+
+.search {
+}
+
+.dropdown {
+    margin-top: 2%;
+    float: left;
+    margin-left: 25% !important;
+    margin-right: 1px !important;
+    height: calc(2.3125rem + 2px);
+}
+
+.searchBtn {
+    margin-top: 2%;
+    height: calc(2.3125rem + 2px);
+    width: calc(2.3125rem + 2px);
+    background-color: #2471a7;
+    border-radius: 0.25rem;
+    border: 1px solid transparent;
+    color: white;
+}
+.fa-search{
+    margin-bottom: 5px;
+    margin-right: 6px;
+    padding-right: 10px;
+}
+/*#searchBar {
     float: left;
     margin-left: 25%;
     margin-top: 25px;
@@ -60,14 +106,15 @@ textarea {
     color: white;
     width: 40px;
     height: 34px;
-}
+}*/
 
 #profilePic {
     border-radius: 100px;
     height: 80px;
+    position: absolute;
+    margin-left:1300px;
     margin-top: 10px;
-    margin-left: 20%;
-    position:absolute;
+    
 }
 
 #menu {

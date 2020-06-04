@@ -1,0 +1,108 @@
+﻿@using JooleCore;
+@model dynamic
+
+@{
+    ViewBag.Title = "couchSummary";
+}
+<head>
+    <link href="~/Content/Product styles/productDetails.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    @*the page is seperated into 2 main columns left and right*@
+    <div class="body">
+        <h1 id="pageTitle">Product Summary</h1>
+
+
+        <div class="left">
+            @*The description table*@
+            <div class="desc">
+                <table id="Table">
+                    <thead>
+                        <tr>
+                            <th colspan="2">DESCRIPTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Manufacturer</th>
+                            <td>@Model.ProductCouchDetail.Manufacturer </td>
+                        </tr>
+                        <tr>
+                            <th>Series</th>
+                            <td>Haiku H</td>
+                        </tr>
+                        <tr>
+                            <th>Model</th>
+                            <td>@Model.CouchDetail.ModelNumber</td>
+                        </tr>
+                    </tbody>
+                </table>
+                @*Type table*@
+                <table id="Table">
+                    <thead>
+                        <tr>
+                            <th colspan="2">TYPE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Use Type</th>
+                            <td>@Model.ProductCouchDetail.UseType</td>
+                        </tr>
+                        <tr>
+                            <th>Application</th>
+                            <td>@Model.ProductCouchDetail.Application</td>
+                        </tr>
+                        <tr>
+                            <th>Acessories</th>
+                            <td>@Model.ProductCouchDetail.Accessories</td>
+                        </tr>
+                        <tr>
+                            <th>Model Year</th>
+                            <td>@Model.ProductCouchDetail.ModelYear</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="type">
+
+            </div>
+        </div>
+        <div class="right">
+            @*Tech Specification table*@
+            <div class="techspec">
+                <table id="Table">
+                    <thead>
+                        <tr>
+                            <th colspan="2">TECHNICAL SPECIFICATIONS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Filling Material</th>
+                            <td>@Model.CouchDetail.FillingMaterial</td>
+                        </tr>
+                        <tr>
+                            <th>Surface Material</th>
+                            <td>@Model.CouchDetail.SurfaceMaterial</td>
+                        </tr>
+                        <tr>
+                            <th>Weight(lbs)</th>
+                            <td>@Model.ProductCouchDetail.Weight</td>
+                        </tr>
+                        <tr>
+                            <th>Dimension (in)</th>
+                            <td>@Model.CouchDetail.Dimension</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</body>
+

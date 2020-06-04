@@ -1,31 +1,133 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    Layout = null;
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+@Html.Raw(TempData["invalidUserMessage"])
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Log In</title>
+    <link href="~/Content/Styles/loginPage.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="background">
+        <div class="container" id="signUpButtonContainer">
+            @*<button id="signUpButton" class="btn btn-primary">Sign Up</button>*@
+            <a href="#myModal" class="trigger-btn" data-toggle="modal">Sign Up</a>
+        </div>
+        <!-- Modal HTML -->
+        <div id="myModal" class="modal fade">
+            <div class="modal-dialog modal-login">
+                <div class="modal-content">
+                    <form method="post" action="@Url.Action("doSignup", "Home")">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Register as User</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            @*image fields*@
+                            <div class="imageDiv">
+                                <label class="imageLabels">Image Preview</label>
+                                <img class="profilePic" src="~/Content/Images/gray.png" id='img-upload' />
+                                <label class="imageLabels">Your Profile Pic</label>
+                                <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <span class="btn btn-default btn-file">
+                                            Choose File <input type="file" id="imgInp" name="userImage">
+                                        </span>
+                                    </span>
+                                    <input type="text" class="img-form-control" value=" No file chosen" readonly>
+                                </div>
+                            </div>
+                            @*input fields*@
+                            <div class="form-group">
+                                <label class="loginLabels">UserName:</label>
+                                <input type="text" class="form-control1" name="userName" placeholder="User Name" required="required">
+                            </div>
+                            <div class="form-group">
+                                <label class="loginLabels">Email Address:</label>
+                                <input type="email" class="form-control1" name="email" placeholder="Email Id" required="required">
+                            </div>
+                            <div class="form-group">
+                                <label class="loginLabels">Password:</label>
+                                <input type="password" class="form-control1" name="userPass" placeholder="Password" required="required">
+                            </div>
+                            <div class="form-group">
+                                <label class="loginLabels">Confirm Password:</label>
+                                <input type="password" class="form-control1" name="confirmPass" placeholder="Password" required="required">
+                            </div>
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <input type="submit" class="btn btn-primary pull-right" value="Sign up">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="text-center" style="margin-top:120px;">
+            <img src="~/Content/Images/logo.png" name="headerLogo" width="320" height="160" />
+        </div>
+        <div class="text-center" style="margin-bottom:20px;">
+            <p class="h4"><strong>Building Product Selection Platform</strong></p>
+        </div>
+        <div class="container" style="justify-content:center;width:450px;">
+            <form method="post" action="@Url.Action("LogIn", "Home")">
+                <div class="form-group has-feedback">
+                    <input name="username" type="text" class="form-control" id="email" placeholder="Username or Email">
+                    <i class="glyphicon glyphicon-user form-control-feedback"></i>
+                </div>
+                <div class="form-group has-feedback">
+                    <input name="password" type="password" class="form-control" id="password" placeholder="Password">
+                    <i class="glyphicon glyphicon-lock form-control-feedback"></i>
+                </div>
+                <button type="submit" class="btn btn-primary" style="float: right;">Log In</button>
+            </form>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+</body>
+</html>
+<script>
+    $(document).ready(function () {
+        $(document).on('change', '.btn-file :file', function () {
+            var input = $(this),
+                label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+            input.trigger('fileselect', [label]);
+        });
+
+        $('.btn-file :file').on('fileselect', function (event, label) {
+
+            var input = $(this).parents('.input-group').find(':text'),
+                log = label;
+
+            if (input.length) {
+                input.val(log);
+            } else {
+                if (log) alert(log);
+            }
+
+        });
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#img-upload').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#imgInp").change(function () {
+            readURL(this);
+        });
+    });
+</script>

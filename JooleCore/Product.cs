@@ -24,5 +24,6 @@ namespace JooleCore
         public string UseType { get; set; }
         public string Application { get; set; }
         public string Accessories { get; set; }
+        public string productImagePath { get; set; }
     }
 }

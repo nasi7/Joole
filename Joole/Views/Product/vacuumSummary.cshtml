@@ -1,0 +1,124 @@
+﻿@using JooleCore;
+@model dynamic
+
+@{
+    ViewBag.Title = "vacuumSummary";
+}
+    <head>
+        <link href="~/Content/Product styles/productDetails.css" rel="stylesheet" />
+    </head>
+
+    <body>
+
+        @*the page is seperated into 2 main columns left and right*@
+        <div class="body">
+            <h1 id="pageTitle">Product Summary</h1>
+
+
+            <div class="left">
+                @*The description table*@
+                <div class="desc">
+                    <table id="Table">
+                        <thead>
+                            <tr>
+                                <th colspan="2">DESCRIPTION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>Manufacturer</th>
+                                <td>@Model.ProductVacDetail.Manufacturer </td>
+                            </tr>
+                            <tr>
+                                <th>Series</th>
+                                <td>Haiku H</td>
+                            </tr>
+                            <tr>
+                                <th>Model</th>
+                                <td>@Model.VacDetail.ModelNumber</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    @*Type table*@
+                    <table id="Table">
+                        <thead>
+                            <tr>
+                                <th colspan="2">TYPE</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>Use Type</th>
+                                <td>Commercial</td>
+                            </tr>
+                            <tr>
+                                <th>Application</th>
+                                <td>@Model.ProductVacDetail.Application</td>
+                            </tr>
+                            <tr>
+                                <th>Mounting Location</th>
+                                <td>Roof</td>
+                            </tr>
+                            <tr>
+                                <th>Acessories</th>
+                                <td>@Model.ProductVacDetail.Accessories</td>
+                            </tr>
+                            <tr>
+                                <th>Model Year</th>
+                                <td>@Model.ProductVacDetail.ModelYear</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="type">
+
+                </div>
+            </div>
+            <div class="right">
+                @*Tech Specification table*@
+                <div class="techspec">
+                    <table id="Table">
+                        <thead>
+                            <tr>
+                                <th colspan="2">TECHNICAL SPECIFICATIONS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>Includes Bag</th>
+                                <td>@Model.VacDetail.HasBag</td>
+                            </tr>
+                            <tr>
+                                <th>Power (W)</th>
+                                <td>@Model.VacDetail.Power</td>
+                            </tr>
+                            <tr>
+                                <th>Operating Voltage (VAC)</th>
+                                <td>@Model.VacDetail.Voltage</td>
+                            </tr>
+                            <tr>
+                                <th>Operating Amperes (A)</th>
+                                <td>@Model.VacDetail.Amperes</td>
+                            </tr>
+                            <tr>
+                                <th>Length of Cord</th>
+                                <td>@Model.VacDetail.CordLength</td>
+                            </tr>
+                            <tr>
+                                <th>Capacity</th>
+                                <td colspan="4">@Model.VacDetail.Capacity</td>
+                            </tr>
+                            <tr>
+                                <th>Dimension (in)</th>
+                                <td colspan="4">@Model.VacDetail.Dimension</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </body>
+
