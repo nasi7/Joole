@@ -36,81 +36,67 @@ namespace Joole.Controllers
             fanModel.ProductFanDetail = unitOfWork.ProductRepository.Get(id);
             return View(fanModel);
         }
-        public ActionResult fanFilter(/*FormCollection col*/)
+        public ActionResult fanFilter(FormCollection col)
         {
-            //FanVM fanModel = new FanVM();
-            //fanModel.Fans = unitOfWork.FanRepository.GetAll();
-            //fanModel.Products = unitOfWork.ProductRepository.GetAll();
-            return View();
-            /*
+            if (col["year-min"] == null)
+            {
+                var t_prods = unitOfWork.ProductRepository.GetAll();
+                var t_fans = unitOfWork.fanRepository.GetAll();
+                var t_result = from p in t_prods
+                               join f in t_fans on p.ModelNumber equals f.ModelNumber
+                               select new { Manufacturer = p.Manufacturer, ProductName = p.ProductName, ModelNumber = p.ModelNumber, Airflow = f.Airflow, PowerMax = f.PowerMax, SpeedSound = f.SpeedSound, SweepDiameter = f.SweepDiameter };
+                ViewBag.result = t_result;
+                return View(t_result);
+            }
+
             //Model Year
-            var year_min = float.Parse(col[""]);
-            var year_max = float.Parse(col[""]);
+            var year_min = float.Parse(col["year-min"]);
+            var year_max = float.Parse(col["year-max"]);
 
             //Airflow
-            var airflow_min = float.Parse(col[""]);
-            var airflow_max = float.Parse(col[""]);
+            var airflow_min = float.Parse(col["airflow-min"]);
+            var airflow_max = float.Parse(col["airflow-max"]);
 
             //Max Power
-            var power_min = float.Parse(col[""]);
-            var power_max = float.Parse(col[""]);
+            var power_min = float.Parse(col["power-min"]);
+            var power_max = float.Parse(col["power-max"]);
 
             //Sound at max speed
-            var sound_min = float.Parse(col[""]);
-            var sound_max = float.Parse(col[""]);
+            var sound_min = float.Parse(col["sound-min"]);
+            var sound_max = float.Parse(col["sound-max"]);
 
             //fan sweep diameter
-            var sweep_min = float.Parse(col[""]);
-            var sweep_max = float.Parse(col[""]);
-*/
-            ////dummy******************
-            //var year_min = 2018;
-            //var year_max = 2050;
+            var sweep_min = float.Parse(col["fan-diameter-min"]);
+            var sweep_max = float.Parse(col["fan-diameter-max"]);
 
-            //var airflow_min = 0.0;
-            //var airflow_max =9999.0;
 
-            ////Max Power
-            //var power_min = 0.0;
-            //var power_max = 9999.0;
+            //filter on products table
+            /*var prods = unitOfWork.ProductRepository.Find(x => Convert.ToInt32(x.ModelYear) >= year_min);
+            prods = prods.Where(x => Convert.ToInt32(x.ModelYear) <= year_max);*/
 
-            ////Sound at max speed
-            //var sound_min = 0.0;
-            //var sound_max = 9999.0;
+            var prods = unitOfWork.ProductRepository.GetAll();
+            prods = prods.Where(x => Convert.ToInt32(x.ModelYear) >= year_min);
+            prods = prods.Where(x => Convert.ToInt32(x.ModelYear) <= year_max);
 
-            //var sweep_min = 0.0;
-            //var sweep_max = 9999.0;
+            //filter on fan table
+            var fans = unitOfWork.fanRepository.GetAll();
+            fans = fans.Where(x => float.Parse(x.Airflow) >= airflow_min);
+            fans = fans.Where(x => float.Parse(x.Airflow) <= airflow_max);
+            fans = fans.Where(x => float.Parse(x.PowerMax) >= power_min);
+            fans = fans.Where(x => float.Parse(x.PowerMax) <= power_max);
+            fans = fans.Where(x => float.Parse(x.SpeedSound) >= sound_min);
+            fans = fans.Where(x => float.Parse(x.SpeedSound) <= sound_max);
+            fans = fans.Where(x => float.Parse(x.SweepDiameter) >= sweep_min);
+            fans = fans.Where(x => float.Parse(x.SweepDiameter) <= sweep_max);
 
-            ////************************
-            ////filter on products table
-            ///*var prods = unitOfWork.ProductRepository.Find(x => Convert.ToInt32(x.ModelYear) >= year_min);
-            //prods = prods.Where(x => Convert.ToInt32(x.ModelYear) <= year_max);*/
+            var result = from p in prods
+                         join f in fans on p.ModelNumber equals f.ModelNumber
+                         select new  { Manufacturer=p.Manufacturer, ProductName=p.ProductName,ModelNumber=p.ModelNumber, Airflow=f.Airflow, PowerMax = f.PowerMax, SpeedSound=f.SpeedSound,SweepDiameter=f.SweepDiameter};
 
-            //var prods = unitOfWork.ProductRepository.GetAll();
-            //prods = prods.Where(x => Convert.ToInt32(x.ModelYear) >= year_min);
-            //prods = prods.Where(x => Convert.ToInt32(x.ModelYear) <= year_max);
 
-            ////filter on fan table
-            //var fans = unitOfWork.fanRepository.GetAll();
-            //fans = fans.Where(x => float.Parse(x.Airflow) >= airflow_min);
-            //fans = fans.Where(x => float.Parse(x.Airflow) <= airflow_max);
-            //fans = fans.Where(x => float.Parse(x.PowerMax) >= power_min);
-            //fans = fans.Where(x => float.Parse(x.PowerMax) <= power_max);
-            //fans = fans.Where(x => float.Parse(x.SpeedSound) >= sound_min);
-            //fans = fans.Where(x => float.Parse(x.SpeedSound) <= sound_max);
-            //fans = fans.Where(x => float.Parse(x.SweepDiameter) >= sweep_min);
-            //fans = fans.Where(x => float.Parse(x.SweepDiameter) <= sweep_max);
+            ViewBag.result = result;
 
-            //var result = from p in prods
-            //             join f in fans on p.ModelNumber equals f.ModelNumber
-            //             select new  { Manufacturer=p.Manufacturer, ProductName=p.ProductName,ModelNumber=p.ModelNumber, Airflow=f.Airflow, PowerMax = f.PowerMax, SpeedSound=f.SpeedSound,SweepDiameter=f.SweepDiameter};
-
-            //foreach ( Fan p in fans)
-            //{
-            //    System.Diagnostics.Debug.WriteLine(p.ModelNumber);
-            //}
-
-            //return View("testFilter");
+            return View(result);
         }
 
 

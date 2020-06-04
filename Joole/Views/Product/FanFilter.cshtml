@@ -16,7 +16,7 @@
     </header>
 
 <div id="fanSideFilter">
-    <form>
+    <form action="/Product/fanFilter" method="post">
         <div class="filterSearch">
             <label>Search:</label><input type="reset" value="Clear" /><input type="submit" value="Save" />
         </div>
@@ -32,7 +32,7 @@
         </div>
         <div class="model-year">
             <label>Model Year:</label>
-            <input id="model-year-from" />&mdash;<input id="model-year-until" />
+            <input id="model-year-from" name="year-min"/>&mdash;<input id="model-year-until" name="year-max"/>
         </div>
         <div class="tech-spec-tab">
             <label>Technical Specifications</label>
@@ -45,28 +45,28 @@
                     <th><i class="fa fa-exchange fa-rotate-90"></i><label>Airflow(CFM)</label></th>
                 </tr>
                 <tr>
-                    <td><input type="text" id="airflow-min" /><div id="airflow-range"></div><input type="text" id="airflow-max" /></td>
+                    <td><input type="text" id="airflow-min" name="airflow-min"/><div id="airflow-range"></div><input type="text" id="airflow-max" name="airflow-max"/></td>
                 </tr>
                 <tr>
 
                     <th><i class="fa fa-exchange fa-rotate-90"></i><label>Max Power (W)</label></th>
                 </tr>
                 <tr>
-                    <td><input type="text" id="power-min" /><div id="power-range"></div><input type="text" id="power-max" /></td>
+                    <td><input type="text" id="power-min" name="power-min"/><div id="power-range"></div><input type="text" id="power-max" name="power-max"/></td>
                 </tr>
                 <tr>
 
                     <th><i class="fa fa-exchange fa-rotate-90"></i><label>Sound at Max speed (dBA)</label></th>
                 </tr>
                 <tr>
-                    <td><input type="text" id="sound-min" /><div id="sound-range"></div><input type="text" id="sound-max" /></td>
+                    <td><input type="text" id="sound-min" name="sound-min"/><div id="sound-range"></div><input type="text" id="sound-max" name="sound-max"/></td>
                 </tr>
                 <tr>
 
                     <th><i class="fa fa-exchange fa-rotate-90"></i><label>Fan sweep diameter(in)</label></th>
                 </tr>
                 <tr>
-                    <td><input type="text" id="fan-diameter-min" /><div id="fan-diameter-range"></div><input type="text" id="fan-diameter-max" /></td>
+                    <td><input type="text" id="fan-diameter-min" name="fan-diameter-min"/><div id="fan-diameter-range"></div><input type="text" id="fan-diameter-max" name="fan-diameter-max"/></td>
                 </tr>
             </table>
         </div>        
@@ -76,32 +76,24 @@
 
 
 <div id="products">
-    @foreach (Fan fan in Model.Fans)
+    @foreach (dynamic fan in ViewBag.result)
     {
         <div class="allFans" style="margin-bottom:8px">
             <div class="thumbnail">
-                <a href="@Url.Action("fanSummary","Product",new { id = fan.ModelNumber})">
+                <a href="@Url.Action("fanSummary","Product",new { id = fan.GetType().GetProperty("ModelNumber").GetValue(fan)})">
                     <img class="img-responsive" title="Click to View Product detail"
                          style="cursor:pointer;height:160px;width:100%" />
                 </a>
 
 
                 <div class="caption">
-                    @foreach (Product product in Model.Products)
-                    {
-                        if (fan.ModelNumber == product.ModelNumber)
-                        {
-                            <h5>@product.Manufacturer</h5>
-                        }
-                    }
 
-
-
-                    <p>@fan.ModelNumber</p>
-                    <p>@fan.Airflow CFM</p>
-                    <p>@fan.PowerMax at max speed</p>
-                    <p>@fan.SpeedSound at max speed</p>
-                    <p>@fan.SweepDiameter fan sweep diameter</p>
+                    <h5>@fan.GetType().GetProperty("Manufacturer").GetValue(fan)</h5>
+                    <p>@fan.GetType().GetProperty("ModelNumber").GetValue(fan)</p>
+                    <p>@fan.GetType().GetProperty("Airflow").GetValue(fan) CFM</p>
+                    <p>@fan.GetType().GetProperty("PowerMax").GetValue(fan) W at max speed</p>
+                    <p>@fan.GetType().GetProperty("SpeedSound").GetValue(fan) dBA at max speed</p>
+                    <p>@fan.GetType().GetProperty("SweepDiameter").GetValue(fan) fan sweep diameter</p>
 
                 </div>
             </div>
