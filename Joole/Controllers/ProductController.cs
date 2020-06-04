@@ -1,21 +1,14 @@
-
-﻿using Joole.Views.ProductVM;
-using JooleCore;
 using JooleRepo;
-using Microsoft.Ajax.Utilities;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using System.Dynamic;
-
 
 namespace Joole.Controllers
 {
     public class ProductController : Controller
     {
+        UnitOfWork unitOfWork = new UnitOfWork();
         // GET: Product
-        private UnitOfWork unitOfWork = new UnitOfWork();
         public ActionResult Index()
         {
             return View();
@@ -109,7 +102,7 @@ namespace Joole.Controllers
             //var result = from p in prods
             //             join f in fans on p.ModelNumber equals f.ModelNumber
             //             select new  { Manufacturer=p.Manufacturer, ProductName=p.ProductName,ModelNumber=p.ModelNumber, Airflow=f.Airflow, PowerMax = f.PowerMax, SpeedSound=f.SpeedSound,SweepDiameter=f.SweepDiameter};
-            
+
             //foreach ( Fan p in fans)
             //{
             //    System.Diagnostics.Debug.WriteLine(p.ModelNumber);
@@ -118,19 +111,19 @@ namespace Joole.Controllers
             //return View("testFilter");
         }
 
-      
+
         public ActionResult vacuumFilter(FormCollection col)
         {
 
-            if (col["year-min"] == null) 
+            if (col["year-min"] == null)
             {
                 var t_prods = unitOfWork.ProductRepository.GetAll();
                 var t_vacs = unitOfWork.vacummRepository.GetAll();
                 var t_result = from p in t_prods
-                             join v in t_vacs on p.ModelNumber equals v.ModelNumber
-                             select new { Manufacturer = p.Manufacturer, ProductName = p.ProductName, ModelNumber = p.ModelNumber, Power = v.Power, Voltage = v.Voltage, CordLength = v.CordLength, Capacity = v.Capacity };
+                               join v in t_vacs on p.ModelNumber equals v.ModelNumber
+                               select new { Manufacturer = p.Manufacturer, ProductName = p.ProductName, ModelNumber = p.ModelNumber, Power = v.Power, Voltage = v.Voltage, CordLength = v.CordLength, Capacity = v.Capacity };
                 ViewBag.result = t_result;
-                return View(t_result); 
+                return View(t_result);
             }
 
             var year_min = float.Parse(col["year-min"]);
@@ -185,7 +178,7 @@ namespace Joole.Controllers
 
             var result = from p in prods
                          join c in couches on p.ModelNumber equals c.ModelNumber
-                         select new { Manufacturer = p.Manufacturer, ProductName = p.ProductName, ModelNumber = p.ModelNumber, FillingMaterial=c.FillingMaterial, SurfaceMaterial=c.SurfaceMaterial, Dimension = c.Dimension};
+                         select new { Manufacturer = p.Manufacturer, ProductName = p.ProductName, ModelNumber = p.ModelNumber, FillingMaterial = c.FillingMaterial, SurfaceMaterial = c.SurfaceMaterial, Dimension = c.Dimension };
 
             ViewBag.result = result;
             return View(result);
@@ -263,7 +256,7 @@ namespace Joole.Controllers
 
             var result = from p in prods
                          join b in benches on p.ModelNumber equals b.ModelNumber
-                         select new { Manufacturer = p.Manufacturer, ProductName = p.ProductName, ModelNumber = p.ModelNumber, Dimension = b.Dimension, SurfaceMaterial = b.SurfaceMaterial};
+                         select new { Manufacturer = p.Manufacturer, ProductName = p.ProductName, ModelNumber = p.ModelNumber, Dimension = b.Dimension, SurfaceMaterial = b.SurfaceMaterial };
 
             return View("ProductSummary");
         }
@@ -341,13 +334,13 @@ namespace Joole.Controllers
             return View();
         }
 
-       /* public static ExpandoObject ToExpando(this object anonymousObject)
-        {
-            IDictionary<string, object> anonymousDictionary = new RouteValueDictionary(anonymousObject);
-            IDictionary<string, object> expando = new ExpandoObject();
-            foreach (var item in anonymousDictionary)
-                expando.Add(item);
-            return (ExpandoObject)expando;
-        }*/
+        /* public static ExpandoObject ToExpando(this object anonymousObject)
+         {
+             IDictionary<string, object> anonymousDictionary = new RouteValueDictionary(anonymousObject);
+             IDictionary<string, object> expando = new ExpandoObject();
+             foreach (var item in anonymousDictionary)
+                 expando.Add(item);
+             return (ExpandoObject)expando;
+         }*/
     }
 }
