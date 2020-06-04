@@ -31,10 +31,10 @@ namespace Joole.Controllers
         }
         public ActionResult fanSummary(string id)
         {
-            //FanVM fanModel = new FanVM();
-            //fanModel.FanDetail = unitOfWork.FanRepository.Get(id);
-            //fanModel.ProductFanDetail = unitOfWork.ProductRepository.Get(id);
-            return View();
+            FanVM fanModel = new FanVM();
+            fanModel.FanDetail = unitOfWork.fanRepository.Get(id);
+            fanModel.ProductFanDetail = unitOfWork.ProductRepository.Get(id);
+            return View(fanModel);
         }
         public ActionResult fanFilter(/*FormCollection col*/)
         {

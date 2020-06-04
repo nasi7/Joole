@@ -197,11 +197,13 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="ImageModel\Img.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\ProductVM\CouchVM.cs" />
     <Compile Include="Views\ProductVM\FanVM.cs" />
@@ -214,10 +216,14 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\couch.png" />
+    <Content Include="Content\Images\couch2.png" />
     <Content Include="Content\Images\dp.png" />
     <Content Include="Content\Images\fan1.png" />
     <Content Include="Content\Images\fan2.png" />
     <Content Include="Content\Images\logo.png" />
+    <Content Include="Content\Images\vac1.png" />
+    <Content Include="Content\Images\vac2.png" />
     <Content Include="Content\Product styles\productDetails.css" />
     <Content Include="Content\Product styles\compareDetails.css" />
     <Content Include="Content\Styles\couchFilter.css" />
@@ -373,6 +379,7 @@
     <Content Include="Views\Product\vacuumFilter.cshtml" />
     <Content Include="Views\Product\vacuumSummary.cshtml" />
     <Content Include="Views\Product\couchSummary.cshtml" />
+    <Content Include="Views\Image\Image.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
