@@ -14,16 +14,16 @@
     @*The entire header layout division*@
     <div class="header">
         <img src="~/Content/Images/logo.png" id="logo" name="headerLogo" />
+        <input type="image" src="~/Content/Images/dp.png" alt="profilePicture" id="profilePic" />
+        @{Html.RenderPartial("_searchPartial");}
 
-        @*Search bar for the header*@
-        <form id="searchBar">
+        @*<form id="searchBar">
 
             <div class="dropdown">
                 <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
                     Category
                     <span class="caret"></span>
                 </button>
-                @*the options for the dropdown menu of the search bar*@
                 <ul class="dropdown-menu">
                     <li><a href="#">Electronic</a></li>
                     <li><a href="#">House</a></li>
@@ -31,11 +31,10 @@
                 </ul>
             </div>
 
-            @*the search text input*@
             <input type="text" name="searchInput" id="searchInput" placeholder="Search..." />
             <button id="search-btn"><span class="glyphicon glyphicon-search"></span></button>
-        </form>
-        <input type="image" src="~/Content/Images/dp.png" alt="profilePicture" id="profilePic" /> @*Temp Profile Picture*@
+        </form>*@
+        @*Temp Profile Picture*@
     </div>
 
     @*the navigation tab*@

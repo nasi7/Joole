@@ -15,6 +15,10 @@ namespace Joole.Controllers
             return View();
         }
 
+        public ActionResult Search()
+        {
+            return View();
+        }
         public ActionResult LogIn()
         {
             string username = Request.Form["username"];
@@ -23,7 +27,7 @@ namespace Joole.Controllers
 
             if (validUser != null && validUser.Password == password)
             {
-                return RedirectToAction("Index", "Users");
+                return RedirectToAction("Search");
             }
             else
             {
@@ -76,34 +80,22 @@ namespace Joole.Controllers
             //return RedirectToAction("Index", "Users");
         }
 
-        public ActionResult Search()
-        {
-            //ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
         [HttpPost]
         public ActionResult doSearch(FormCollection col)
         {
-            //ViewBag.Message = "Your contact page.";
-
-            /*var sub = col["subCategory"];*/
-
-            string sub = "TableSaws";
-            System.Diagnostics.Debug.WriteLine("\ndoSearch called!\n");
-
-            Product prod = new Product();
-
-            var prods = unitOfWork.ProductRepository.Find(product => product.SubCategory == sub);
-
-            /*System.Diagnostics.Debug.WriteLine(prods.ToList()[0]);*/
-
-            /*foreach (var p in prods) {*/
-            //System.Diagnostics.Debug.WriteLine(prods.ToList()[0].ProductName);
-
-
-            return View("search");
+            var sub = col["subCategory"];
+            if (sub == "Fan")
+            {
+                return RedirectToAction("fanFilter", "Product");
+            }
+            else if (sub == "Vacuum")
+            {
+                return RedirectToAction("vacuumFilter", "Product");
+            }
+            else
+            {
+                return View("search");
+            }
         }
 
     }

@@ -10,9 +10,17 @@ namespace Joole.Views.ProductVM
     {
         public IEnumerable<object> vacs { get; set; }
 
-        public VacuumVM(IEnumerable<object> obj) 
-        {
-            vacs = obj;
-        }
+       //public VacuumVM()
+       // {
+
+       // }
+       // public VacuumVM(IEnumerable<object> obj) 
+       // {
+       //     vacs = obj;
+       // }
+
+        public Vacumm VacDetail { get; set; }
+
+        public Product ProductVacDetail { get; set; }
     }
 }

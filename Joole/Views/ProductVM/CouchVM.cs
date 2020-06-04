@@ -8,11 +8,9 @@ namespace Joole.Views.ProductVM
 {
     public class CouchVM
     {
-        public IEnumerable<Couch> Couches { get; set; }
-        public IEnumerable<Product> Products { get; set; }
 
-        public Fan CouchDetail { get; set; }
+        public Couch CouchDetail { get; set; }
 
-        public Product ProductFanDetail { get; set; }
+        public Product ProductCouchDetail { get; set; }
     }
 }
