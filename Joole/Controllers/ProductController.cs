@@ -14,9 +14,6 @@ namespace Joole.Controllers
 {
     public class ProductController : Controller
     {
-
-       // UnitOfWork unitOfWork = new UnitOfWork();
-
         // GET: Product
         private UnitOfWork unitOfWork = new UnitOfWork();
         public ActionResult Index()
@@ -39,17 +36,17 @@ namespace Joole.Controllers
         }
         public ActionResult fanSummary(string id)
         {
-            FanVM fanModel = new FanVM();
-            fanModel.FanDetail = unitOfWork.FanRepository.Get(id);
-            fanModel.ProductFanDetail = unitOfWork.ProductRepository.Get(id);
-            return View(fanModel);
+            //FanVM fanModel = new FanVM();
+            //fanModel.FanDetail = unitOfWork.FanRepository.Get(id);
+            //fanModel.ProductFanDetail = unitOfWork.ProductRepository.Get(id);
+            return View();
         }
         public ActionResult fanFilter(/*FormCollection col*/)
         {
-            FanVM fanModel = new FanVM();
-            fanModel.Fans = unitOfWork.FanRepository.GetAll();
-            fanModel.Products = unitOfWork.ProductRepository.GetAll();
-            return View(fanModel);
+            //FanVM fanModel = new FanVM();
+            //fanModel.Fans = unitOfWork.FanRepository.GetAll();
+            //fanModel.Products = unitOfWork.ProductRepository.GetAll();
+            return View();
             /*
             //Model Year
             var year_min = float.Parse(col[""]);
@@ -121,15 +118,14 @@ namespace Joole.Controllers
             //return View("testFilter");
         }
 
-
-
+      
         public ActionResult vacuumFilter(FormCollection col)
         {
+
             if (col["year-min"] == null) 
             {
                 var t_prods = unitOfWork.ProductRepository.GetAll();
                 var t_vacs = unitOfWork.vacummRepository.GetAll();
-
                 var t_result = from p in t_prods
                              join v in t_vacs on p.ModelNumber equals v.ModelNumber
                              select new { Manufacturer = p.Manufacturer, ProductName = p.ProductName, ModelNumber = p.ModelNumber, Power = v.Power, Voltage = v.Voltage, CordLength = v.CordLength, Capacity = v.Capacity };
@@ -191,7 +187,8 @@ namespace Joole.Controllers
                          join c in couches on p.ModelNumber equals c.ModelNumber
                          select new { Manufacturer = p.Manufacturer, ProductName = p.ProductName, ModelNumber = p.ModelNumber, FillingMaterial=c.FillingMaterial, SurfaceMaterial=c.SurfaceMaterial, Dimension = c.Dimension};
 
-            return View("ProductSummary");
+            ViewBag.result = result;
+            return View(result);
         }
 
         public ActionResult tableFilter(FormCollection col)

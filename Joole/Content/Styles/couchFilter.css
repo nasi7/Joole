@@ -1,9 +1,14 @@
-﻿#menu {
+﻿#menu{
     display: none;
 }
 
-#fanSideFilter {
-    height: 550px;
+
+#menu {
+    display: none;
+}
+
+#couchSideFilter {
+    height: 185px;
     width: 300px;
     top: 100px;
     left: 0;
@@ -14,7 +19,7 @@
     position: absolute;
 }
 
-    #fanSideFilter label {
+    #couchSideFilter label {
         padding-left: 10px;
         padding: 10px;
     }
@@ -110,7 +115,7 @@
             transition: 0.5s;
         }
 
-.productTypeTab, .model-year, .tech-spec-tab {
+.productTypeTab{
     border-bottom: 1px solid grey;
 }
 
@@ -120,31 +125,3 @@
     margin-right: 15px;
 }
 
-#power-range, #volt-range, #cord-range, #Capacity-range {
-    width: 200px;
-    margin-top: 5px;
-    float: left;
-    margin-left: 5px;
-    margin-right: 5px;
-}
-
-.spec-range table tr td input[type=text] {
-    float: left;
-    width: 30px;
-}
-
-.spec-range table tr td #power-min, #volt-min, #cord-min, #Capacity-min {
-    margin-left: 20px;
-}
-
-.fa-exchange {
-    margin-left: 20px;
-}
-
-#slider-range {
-    width: 200px;
-}
-
-#min, #max {
-    width: 35px;
-}

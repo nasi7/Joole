@@ -46,18 +46,18 @@ namespace JooleRepo
             }
         }
 
-        public Repository<Fan> FanRepository
-        {
-            get
-            {
+        //public Repository<Fan> FanRepository
+        //{
+        //    get
+        //    {
 
-                if (this.fanRepository == null)
-                {
-                    this.fanRepository = new FanRepository(context);
-                }
-                return fanRepository;
-            }
-        }
+        //        if (this.fanRepository == null)
+        //        {
+        //            this.fanRepository = new FanRepository(context);
+        //        }
+        //        return fanRepository;
+        //    }
+        //}
 
         public Repository<Product> ProductRepository
         {
