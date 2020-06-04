@@ -120,7 +120,7 @@
     margin-right: 15px;
 }
 
-#airflow-range, #power-range, #sound-range, #fan-diameter-range {
+#power-range, #volt-range, #cord-range, #Capacity-range {
     width: 200px;
     margin-top: 5px;
     float: left;
@@ -133,7 +133,7 @@
     width: 30px;
 }
 
-.spec-range table tr td #airflow-min, #power-min, #sound-min, #fan-diameter-min {
+.spec-range table tr td #power-min, #volt-min, #cord-min, #Capacity-min {
     margin-left: 20px;
 }
 

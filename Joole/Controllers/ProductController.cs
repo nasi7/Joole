@@ -36,17 +36,17 @@ namespace Joole.Controllers
         }
         public ActionResult fanSummary(string id)
         {
-            FanVM fanModel = new FanVM();
-            fanModel.FanDetail = unitOfWork.FanRepository.Get(id);
-            fanModel.ProductFanDetail = unitOfWork.ProductRepository.Get(id);
-            return View(fanModel);
+            //FanVM fanModel = new FanVM();
+            //fanModel.FanDetail = unitOfWork.FanRepository.Get(id);
+            //fanModel.ProductFanDetail = unitOfWork.ProductRepository.Get(id);
+            return View();
         }
         public ActionResult fanFilter(/*FormCollection col*/)
         {
-            FanVM fanModel = new FanVM();
-            fanModel.Fans = unitOfWork.FanRepository.GetAll();
-            fanModel.Products = unitOfWork.ProductRepository.GetAll();
-            return View(fanModel);
+            //FanVM fanModel = new FanVM();
+            //fanModel.Fans = unitOfWork.FanRepository.GetAll();
+            //fanModel.Products = unitOfWork.ProductRepository.GetAll();
+            return View();
             /*
             //Model Year
             var year_min = float.Parse(col[""]);
@@ -118,11 +118,10 @@ namespace Joole.Controllers
             //return View("testFilter");
         }
 
-
-
+      
         public ActionResult vacuumFilter(FormCollection col)
         {
-            var year_min = 2018;
+            var year_min = 2000;
             var year_max = 2050;
 
             var power_min = 0.0;
@@ -176,7 +175,8 @@ namespace Joole.Controllers
                          join c in couches on p.ModelNumber equals c.ModelNumber
                          select new { Manufacturer = p.Manufacturer, ProductName = p.ProductName, ModelNumber = p.ModelNumber, FillingMaterial=c.FillingMaterial, SurfaceMaterial=c.SurfaceMaterial, Dimension = c.Dimension};
 
-            return View();
+            ViewBag.result = result;
+            return View(result);
         }
 
         public ActionResult tableFilter(FormCollection col)

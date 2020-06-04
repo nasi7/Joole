@@ -8,7 +8,7 @@
 
 <header>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="~/Content/Styles/FanFilterPage.css" rel="stylesheet" />
+    <link href="~/Content/Styles/couchFilter.css" rel="stylesheet" />
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="/resources/demos/style.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -16,39 +16,55 @@
     <script src="~/Scripts/ProductView/fanFilter.js"></script>
 </header>
 
-<div id="products">
-    @foreach (Couch couch in Model.Couches)
-    {
-        <div class="allFans" style="margin-bottom:8px">
-            <div class="thumbnail">
-                <a href="@Url.Action("couchSummary","Product",new { id = couch.ModelNumber})">
-                    <img class="img-responsive" title="Click to View Product detail"
-                         style="cursor:pointer;height:160px;width:100%" />
-                </a>
-
-
-                <div class="caption">
-                    @foreach (Product product in Model.Products)
-                    {
-                        if (couch.ModelNumber == product.ModelNumber)
-                        {
-                            <h5>@product.Manufacturer</h5>
-                        }
-                    }
-
-
-
-                    <p>@couch.ModelNumber</p>
-                    <p>@couch.FillingMaterial Filling Material</p>
-                    <p>@couch.SurfaceMaterial Surface Material</p>
-                    <p>@couch.Dimension Dimension</p>
-
-                </div>
-            </div>
+<div id="couchSideFilter">
+    <form>
+        <div class="filterSearch">
+            <label>Search:</label><input type="reset" value="Clear" /><input type="submit" value="Save" />
+        </div>
+        <table class="filterNav">
+            <tr>
+                <th><a>Product</a></th>
+                <th><a>Project</a></th>
+            </tr>
+        </table>
+        <div class="productTypeTab">
+            <label>Product Type</label>
+            <i class="fa fa-caret-down fa-2x"></i>
+        </div>
+        <div class="model-year">
+            <label>Model Year:</label>
+            <input id="model-year-from" />&mdash;<input id="model-year-until" />
         </div>
 
-    }
+    </form>
 </div>
+    
+
+    <div id="products">
+        @foreach (dynamic couch in ViewBag.result)
+        {
+            <div class="allFans" style="margin-bottom:8px">
+                <div class="thumbnail">
+                    <a href="@Url.Action("couchSummary","Product",new { id = couch.GetType().GetProperty("ModelNumber").GetValue(couch)})">
+                        <img class="img-responsive" title="Click to View Product detail"
+                             style="cursor:pointer;height:160px;width:100%" />
+                    </a>
+
+
+                    <div class="caption">
+
+                        <h5>@couch.GetType().GetProperty("Manufacturer").GetValue(couch)</h5>
+                        <p>@couch.GetType().GetProperty("ModelNumber").GetValue(couch)</p>
+                        <p>@couch.GetType().GetProperty("FillingMaterial").GetValue(couch) Filling Material</p>
+                        <p>@couch.GetType().GetProperty("SurfaceMaterial").GetValue(couch) Surface Material</p>
+                        <p>@couch.GetType().GetProperty("Dimension").GetValue(couch) Dimension</p>
+
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
 
 
 
