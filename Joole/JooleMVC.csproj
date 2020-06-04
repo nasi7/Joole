@@ -371,6 +371,8 @@
     <Content Include="Views\Product\fanFilter.cshtml" />
     <Content Include="Views\Product\couchFilter.cshtml" />
     <Content Include="Views\Product\vacuumFilter.cshtml" />
+    <Content Include="Views\Product\vacuumSummary.cshtml" />
+    <Content Include="Views\Product\couchSummary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

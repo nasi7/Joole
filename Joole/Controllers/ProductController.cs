@@ -1,3 +1,5 @@
+using Joole.Views.ProductVM;
+using JooleCore;
 using JooleRepo;
 using System;
 using System.Linq;
@@ -164,7 +166,14 @@ namespace Joole.Controllers
 
             return View(result);
         }
+        public ActionResult vacuumSummary(string id)
+        {
+            VacuumVM vacuumModel = new VacuumVM();
+            vacuumModel.ProductVacDetail = unitOfWork.ProductRepository.Get(id);
+            vacuumModel.VacDetail = unitOfWork.vacummRepository.Get(id);
 
+            return View(vacuumModel);
+        }
         public ActionResult couchFilter(FormCollection col)
         {
             var year_min = 2018;
@@ -183,7 +192,14 @@ namespace Joole.Controllers
             ViewBag.result = result;
             return View(result);
         }
+        public ActionResult couchSummary(string id)
+        {
+            CouchVM couchModel = new CouchVM();
+            couchModel.ProductCouchDetail = unitOfWork.ProductRepository.Get(id);
+            couchModel.CouchDetail = unitOfWork.couchRepository.Get(id);
 
+            return View(couchModel);
+        }
         public ActionResult tableFilter(FormCollection col)
         {
             var year_min = 2018;
