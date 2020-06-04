@@ -121,20 +121,32 @@ namespace Joole.Controllers
       
         public ActionResult vacuumFilter(FormCollection col)
         {
-            var year_min = 2000;
-            var year_max = 2050;
 
-            var power_min = 0.0;
-            var power_max = 9999.0;
+            if (col["year-min"] == null) 
+            {
+                var t_prods = unitOfWork.ProductRepository.GetAll();
+                var t_vacs = unitOfWork.vacummRepository.GetAll();
+                var t_result = from p in t_prods
+                             join v in t_vacs on p.ModelNumber equals v.ModelNumber
+                             select new { Manufacturer = p.Manufacturer, ProductName = p.ProductName, ModelNumber = p.ModelNumber, Power = v.Power, Voltage = v.Voltage, CordLength = v.CordLength, Capacity = v.Capacity };
+                ViewBag.result = t_result;
+                return View(t_result); 
+            }
 
-            var voltage_min = 0.0;
-            var voltage_max = 9999.0;
+            var year_min = float.Parse(col["year-min"]);
+            var year_max = float.Parse(col["year-max"]);
 
-            var cord_min = 0.0;
-            var cord_max = 333.33;
+            var power_min = float.Parse(col["power-min"]);
+            var power_max = float.Parse(col["power-max"]);
 
-            var capacity_min = 0.0;
-            var capacity_max = 9999.99;
+            var voltage_min = float.Parse(col["volt-min"]);
+            var voltage_max = float.Parse(col["volt-max"]);
+
+            var cord_min = float.Parse(col["cord-min"]);
+            var cord_max = float.Parse(col["cord-max"]);
+
+            var capacity_min = float.Parse(col["Capacity-min"]);
+            var capacity_max = float.Parse(col["Capacity-max"]);
 
 
             var prods = unitOfWork.ProductRepository.GetAll();
