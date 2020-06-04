@@ -88,22 +88,27 @@ namespace Joole.Controllers
         {
             //ViewBag.Message = "Your contact page.";
 
-            /*var sub = col["subCategory"];*/
+            var sub = col["subCategory"];
 
-            string sub = "TableSaws";
-            System.Diagnostics.Debug.WriteLine("\ndoSearch called!\n");
+            if (sub == "Fan")
+            {
+                var prods = unitOfWork.ProductRepository.Find(product => product.SubCategory == "Fans");
+                return View("~/Views/Product/fanFilter.cshtml");
 
-            Product prod = new Product();
+            }
+            else if (sub == "Vacuum")
+            {
+                var prods = unitOfWork.ProductRepository.Find(product => product.SubCategory == "Vacumms");
+                return View("~/Views/Product/vacuumFilter.cshtml");
+            }
+            else
+            {
+                return View("search");
 
-            var prods = unitOfWork.ProductRepository.Find(product => product.SubCategory == sub);
-
-            /*System.Diagnostics.Debug.WriteLine(prods.ToList()[0]);*/
-
-            /*foreach (var p in prods) {*/
-            //System.Diagnostics.Debug.WriteLine(prods.ToList()[0].ProductName);
+            }
 
 
-            return View("search");
+
         }
 
     }
