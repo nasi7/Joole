@@ -1,5 +1,4 @@
 using Joole.Views.ProductVM;
-using JooleCore;
 using JooleRepo;
 using System;
 using System.Linq;
@@ -44,7 +43,7 @@ namespace Joole.Controllers
                 var t_fans = unitOfWork.fanRepository.GetAll();
                 var t_result = from p in t_prods
                                join f in t_fans on p.ModelNumber equals f.ModelNumber
-                               select new { Manufacturer = p.Manufacturer, ProductName = p.ProductName, ModelNumber = p.ModelNumber, Airflow = f.Airflow, PowerMax = f.PowerMax, SpeedSound = f.SpeedSound, SweepDiameter = f.SweepDiameter };
+                               select new { Manufacturer = p.Manufacturer, path = p.productImagePath, ProductName = p.ProductName, ModelNumber = p.ModelNumber, Airflow = f.Airflow, PowerMax = f.PowerMax, SpeedSound = f.SpeedSound, SweepDiameter = f.SweepDiameter };
                 ViewBag.result = t_result;
                 return View(t_result);
             }
@@ -91,7 +90,7 @@ namespace Joole.Controllers
 
             var result = from p in prods
                          join f in fans on p.ModelNumber equals f.ModelNumber
-                         select new  { Manufacturer=p.Manufacturer, ProductName=p.ProductName,ModelNumber=p.ModelNumber, Airflow=f.Airflow, PowerMax = f.PowerMax, SpeedSound=f.SpeedSound,SweepDiameter=f.SweepDiameter};
+                         select new { Manufacturer = p.Manufacturer, ProductName = p.ProductName, ModelNumber = p.ModelNumber, path = p.productImagePath, Airflow = f.Airflow, PowerMax = f.PowerMax, SpeedSound = f.SpeedSound, SweepDiameter = f.SweepDiameter };
 
 
             ViewBag.result = result;
@@ -109,7 +108,7 @@ namespace Joole.Controllers
                 var t_vacs = unitOfWork.vacummRepository.GetAll();
                 var t_result = from p in t_prods
                                join v in t_vacs on p.ModelNumber equals v.ModelNumber
-                               select new { Manufacturer = p.Manufacturer, ProductName = p.ProductName, ModelNumber = p.ModelNumber, Power = v.Power, Voltage = v.Voltage, CordLength = v.CordLength, Capacity = v.Capacity };
+                               select new { Manufacturer = p.Manufacturer, path = p.productImagePath, ProductName = p.ProductName, ModelNumber = p.ModelNumber, Power = v.Power, Voltage = v.Voltage, CordLength = v.CordLength, Capacity = v.Capacity };
                 ViewBag.result = t_result;
                 return View(t_result);
             }
@@ -146,7 +145,7 @@ namespace Joole.Controllers
 
             var result = from p in prods
                          join v in vacs on p.ModelNumber equals v.ModelNumber
-                         select new { Manufacturer = p.Manufacturer, ProductName = p.ProductName, ModelNumber = p.ModelNumber, Power = v.Power, Voltage = v.Voltage, CordLength = v.CordLength, Capacity = v.Capacity };
+                         select new { Manufacturer = p.Manufacturer, ProductName = p.ProductName, path = p.productImagePath, ModelNumber = p.ModelNumber, Power = v.Power, Voltage = v.Voltage, CordLength = v.CordLength, Capacity = v.Capacity };
 
             ViewBag.result = result;
 

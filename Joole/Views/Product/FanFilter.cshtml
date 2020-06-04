@@ -81,13 +81,13 @@
         <div class="allFans" style="margin-bottom:8px">
             <div class="thumbnail">
                 <a href="@Url.Action("fanSummary","Product",new { id = fan.GetType().GetProperty("ModelNumber").GetValue(fan)})">
-                    <img class="img-responsive" title="Click to View Product detail"
+                    <img src="@Url.Content(@fan.GetType().GetProperty("path").GetValue(fan))" class="img-responsive" title="Click to View Product detail"
                          style="cursor:pointer;height:160px;width:100%" />
                 </a>
 
 
                 <div class="caption">
-
+              
                     <h5>@fan.GetType().GetProperty("Manufacturer").GetValue(fan)</h5>
                     <p>@fan.GetType().GetProperty("ModelNumber").GetValue(fan)</p>
                     <p>@fan.GetType().GetProperty("Airflow").GetValue(fan) CFM</p>

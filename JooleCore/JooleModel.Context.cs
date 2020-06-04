@@ -9,21 +9,22 @@
 
 namespace JooleCore
 {
+    using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-
+    
     public partial class JooleDatabaseEntities : DbContext
     {
         public JooleDatabaseEntities()
             : base("name=JooleDatabaseEntities")
         {
         }
-
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-
+    
         public virtual DbSet<Couch> Couches { get; set; }
         public virtual DbSet<Fan> Fans { get; set; }
         public virtual DbSet<Product> Products { get; set; }

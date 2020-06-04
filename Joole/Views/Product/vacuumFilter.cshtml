@@ -82,7 +82,7 @@
         <div class="allFans" style="margin-bottom:8px">
             <div class="thumbnail">
                 <a href="@Url.Action("vacuumSummary","Product",new { id = vac.GetType().GetProperty("ModelNumber").GetValue(vac)})">
-                    <img class="img-responsive" title="Click to View Product detail"
+                    <img src="@Url.Content(vac.GetType().GetProperty("path").GetValue(vac))" class="img-responsive" title="Click to View Product detail"
                          style="cursor:pointer;height:160px;width:100%" />
                 </a>
 
